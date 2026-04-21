@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   const navLinks = [
     { path: '/', label: 'Accueil' },
@@ -17,7 +26,7 @@ const Header = () => {
   return (
     <header className="main-header">
       <div className="container header-container">
-        <Link to="/" className="logo-link">
+        <Link to="/" className="logo-link" onClick={closeMenu}>
           <div className="logo-wrapper">
              <div className="logo-icon-svg">
                <svg viewBox="0 0 100 80" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
@@ -29,7 +38,6 @@ const Header = () => {
                  <circle cx="55" cy="15" r="10" fill="var(--brown)" />
                  <path d="M 55 30 C 70 30, 85 50, 70 70 C 65 78, 50 75, 40 68 C 35 62, 30 55, 28 50 C 38 60, 60 70, 65 55 C 70 40, 55 40, 45 45" fill="var(--brown)" stroke="var(--brown)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                  
-                 {/* Heart center cutouts / overlaps (simplification for the abstract shape) */}
                </svg>
              </div>
              <div className="logo-text">
@@ -37,21 +45,33 @@ const Header = () => {
              </div>
           </div>
         </Link>
-        <nav className="header-nav">
+
+        {/* Hamburger Toggle */}
+        <button className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu} aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav className={`header-nav ${isMenuOpen ? 'mobile-open' : ''}`}>
           {navLinks.map((link) => (
              <Link 
                 key={link.path} 
                 to={link.path} 
                 className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                onClick={closeMenu}
              >
                 {link.label}
              </Link>
           ))}
+          <Link to="/reservation" className="btn btn-primary header-btn mobile-only-btn" onClick={closeMenu}>Je suis intéressé(e)</Link>
         </nav>
-        <Link to="/reservation" className="btn btn-primary header-btn">Je suis intéressé(e)</Link>
+        
+        <Link to="/reservation" className="btn btn-primary header-btn desktop-only-btn">Je suis intéressé(e)</Link>
       </div>
     </header>
   );
 };
 
 export default Header;
+

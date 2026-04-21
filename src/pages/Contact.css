@@ -44,3 +44,11 @@
   outline: none;
   border-color: var(--teal);
 }
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+  .contact-title {
+    font-size: 1.8rem;
+  }
+}

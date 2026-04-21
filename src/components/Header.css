@@ -92,8 +92,104 @@
   background-color: var(--teal-hover);
 }
 
-@media (max-width: 900px) {
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+.menu-toggle span {
+  width: 2rem;
+  height: 0.25rem;
+  background: var(--teal);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+.menu-toggle.open span:first-child {
+  transform: rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.mobile-only-btn {
+  display: none;
+}
+
+@media (max-width: 1024px) {
   .header-nav {
-    display: none;
+    gap: 1.5rem;
   }
 }
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .desktop-only-btn {
+    display: none;
+  }
+
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1050;
+  }
+
+  .header-nav.mobile-open {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+  }
+
+  .mobile-only-btn {
+    display: block;
+    margin-top: 1rem;
+    width: 80%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo {
+     font-size: 2rem;
+  }
+  .logo-estla {
+    font-size: 1.8rem;
+  }
+  .logo-icon-svg {
+    width: 45px;
+    height: 35px;
+  }
+}
+

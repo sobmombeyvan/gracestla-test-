@@ -20,7 +20,24 @@
   .calendar-layout {
     grid-template-columns: 1fr;
   }
+  .calendar-left, .calendar-right {
+    padding: 20px;
+  }
+  .calendar-left {
+    border-right: none;
+    border-bottom: 1px solid #EEE;
+  }
+  .day-num {
+    width: 35px;
+    height: 35px;
+    font-size: 0.85rem;
+  }
+  .calendar-left h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
 }
+
 
 /* LEFT SIDE - CALENDAR GRID */
 .calendar-left {

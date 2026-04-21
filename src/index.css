@@ -75,3 +75,22 @@ section {
 .btn-primary:hover {
   background-color: var(--teal-hover);
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input, select, textarea {
+  font-size: 16px !important; /* Prevents auto-zoom on iOS */
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 3rem 1.25rem;
+  }
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+

@@ -280,3 +280,19 @@
     transform: none;
   }
 }
+
+@media (max-width: 768px) {
+  .pf-title {
+    font-size: 2rem;
+  }
+  .pf-hero {
+    padding: 3rem 1.5rem;
+  }
+  .pf-card {
+    padding: 2rem 1rem;
+  }
+  .pf-why-list li {
+    font-size: 1rem;
+  }
+}
+

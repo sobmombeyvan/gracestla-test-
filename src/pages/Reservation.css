@@ -252,7 +252,10 @@
     gap: 3rem;
   }
   .res-hero {
-    padding: 5rem 2rem;
+    padding: 4rem 1.5rem;
+  }
+  .res-hero-title {
+    font-size: 2.2rem;
   }
   .res-hero-content {
     margin-left: 0;
@@ -260,4 +263,23 @@
   .res-right {
     justify-content: center;
   }
+  .res-cards {
+    flex-direction: column;
+  }
+  .res-form-wrapper {
+    padding: 1.5rem;
+  }
+  .res-main {
+    padding: 3rem 1.5rem;
+  }
 }
+
+@media (max-width: 480px) {
+  .res-benefits li {
+    font-size: 0.95rem;
+  }
+  .res-header h2 {
+    font-size: 1.3rem;
+  }
+}
+
