@@ -1,0 +1,212 @@
+.about-page {
+  background-color: #FAF5F2; /* Soft pink/sand background */
+  min-height: 100vh;
+  padding-bottom: 5rem;
+  font-family: 'Inter', sans-serif; /* assuming modern sans-serif for regular text */
+}
+
+/* Typography styles */
+.about-page h1, 
+.about-page h2, 
+.about-page h3,
+.about-caption {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.about-hero {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  min-height: 400px; /* Reduced to have more focus on the bottom */
+  display: flex;
+  align-items: flex-start; /* Aligned to the top half as per the mockup */
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.3)); /* Makes text readable */
+  z-index: 1;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  color: #332624; /* Dark earthy color */
+  max-width: 800px;
+}
+
+.about-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: #3A2B2F;
+}
+
+.about-hero-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: #5A474A;
+}
+
+.about-intro {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #3A2B2F;
+}
+
+.about-intro h2 {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.about-intro p {
+  font-size: 1.2rem;
+  color: #5A474A;
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.about-card {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .about-card {
+    flex-direction: row;
+    padding: 3rem;
+    gap: 3rem;
+  }
+}
+
+.about-story {
+  flex: 1;
+  padding: 2rem;
+  color: #3A2B2F;
+}
+
+@media (min-width: 768px) {
+  .about-story {
+    padding: 0;
+  }
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  color: #725A58;
+}
+
+.about-story p {
+  line-height: 1.6;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  color: #4A3A3D;
+}
+
+.about-story p.space-before {
+  margin-top: 1.5rem;
+}
+
+.about-story strong {
+  font-weight: 700;
+  color: #3A2B2F;
+}
+
+.about-founder-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-image-container {
+  margin-bottom: 2rem;
+}
+
+.founder-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.founder-caption {
+  font-size: 0.9rem;
+  color: #5A474A;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.why-box {
+  background-color: #FAF5F2; /* Matches page bg or slightly different */
+  padding: 2rem;
+  border-radius: 4px;
+  margin-top: auto;
+}
+
+.why-box h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  color: #5A474A;
+}
+
+.why-box p {
+  line-height: 1.6;
+  margin-bottom: 0.2rem;
+  color: #4A3A3D;
+}
+
+.why-box p.space-before {
+  margin-top: 1.5rem;
+}
+
+.why-box .text-highlight {
+  font-weight: 500;
+}
+
+.btn-accompany {
+  display: inline-block;
+  margin-top: 2rem;
+  background-color: #9C5B4E; /* Earthy reddish brown from button in mockup */
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .btn-accompany {
+    width: auto;
+  }
+}
+
+.btn-accompany:hover {
+  background-color: #7D493F;
+}

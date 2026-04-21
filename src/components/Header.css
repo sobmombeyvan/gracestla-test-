@@ -1,0 +1,99 @@
+.main-header {
+  background: var(--white);
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-link {
+  text-decoration: none;
+  color: var(--text-dark);
+}
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.logo-icon-svg {
+  width: 55px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.header-logo {
+  font-family: var(--font-logo, 'Caveat', cursive);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.logo-grace {
+  color: var(--teal);
+}
+.logo-estla {
+  color: var(--brown);
+  font-size: 2.2rem;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--teal);
+}
+.nav-link.active {
+  color: var(--teal);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--teal);
+}
+
+.header-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  background-color: var(--teal);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+}
+.header-btn:hover {
+  background-color: var(--teal-hover);
+}
+
+@media (max-width: 900px) {
+  .header-nav {
+    display: none;
+  }
+}

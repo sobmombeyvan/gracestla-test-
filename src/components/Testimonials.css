@@ -1,0 +1,129 @@
+.testimonials {
+  background: linear-gradient(to bottom, #EBE5DF 0%, #D4C9BD 100%);
+  padding: 5rem 2rem 6rem;
+}
+
+.testimonials .section-header {
+  margin-bottom: 4rem;
+}
+
+.testimonial-box {
+  background: var(--sand-light);
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  position: relative;
+  text-align: left;
+}
+
+.testimonial-image-container {
+  flex-shrink: 0;
+  margin-right: 2.5rem;
+}
+
+.testimonial-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--white);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.testimonial-text-container {
+  flex: 1;
+  position: relative;
+  padding: 1rem 3rem;
+}
+
+.quote-mark {
+  color: #c9b4a4;
+  font-size: 5rem;
+  font-family: var(--font-heading);
+  position: absolute;
+  line-height: 1;
+  height: 40px;
+}
+
+.quote-mark.open {
+  top: -15px;
+  left: -15px;
+}
+
+.quote-mark.close {
+  bottom: -30px;
+  right: 0px;
+}
+
+.quote {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.author-name {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: right;
+  color: var(--text-light);
+}
+
+.pagination {
+  margin: 2.5rem 0 3.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(0,0,0,0.15);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: var(--teal);
+}
+
+.cta-container {
+  margin-top: 1rem;
+}
+
+.cta-btn {
+  padding: 1rem 3.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .testimonial-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .testimonial-image-container {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+  .quote-mark {
+    display: none;
+  }
+  .testimonial-text-container {
+    padding: 0;
+  }
+  .author-name {
+    text-align: center;
+  }
+}

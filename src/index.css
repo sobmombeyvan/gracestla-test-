@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..800;1,400..800&display=swap');
+
+:root {
+  /* Colors - matching provided schema */
+  --teal: #1DB2AA;
+  --teal-hover: #0A4F4C;
+  --teal-dark: #0A4F4C;
+  --brown: #A87454;
+  --brown-dark: #5A3A2B;
+  --cream: #EEDCCB;
+  --sand-light: #FBF8F5; /* Lighter version of cream for main bg */
+  --sand: #EEDCCB;
+  --text-dark: #5A3A2B;
+  --text-light: #A87454;
+  --white: #FFFFFF;
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-logo: 'Caveat', 'Dancing Script', cursive;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Layout & Spacing */
+  --max-width: 1200px;
+  --section-padding: 5rem 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--white);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+/* Utilities */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: var(--section-padding);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--teal);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--teal-hover);
+}

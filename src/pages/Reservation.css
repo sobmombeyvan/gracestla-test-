@@ -1,0 +1,263 @@
+.res-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%), url('/hero_bg.png');
+  background-size: cover;
+  background-position: center 30%;
+  padding: 6rem 4rem;
+}
+
+.res-hero-content {
+  max-width: 700px;
+  color: var(--white);
+  animation: fadeIn 1s ease-out;
+  margin-left: 2rem;
+}
+
+.res-hero-title {
+  color: var(--white);
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+
+.res-hero-subtitle {
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.res-hero-btn {
+  font-size: 1.05rem;
+  padding: 1rem 2.5rem;
+  border-radius: 6px;
+}
+
+.res-main {
+  padding: 5rem 2rem;
+  background-color: var(--sand-light);
+}
+
+.res-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.res-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.res-header.small {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.res-header h2 {
+  font-size: 1.6rem;
+  flex: 1;
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.res-header h3 {
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.res-header .line {
+  flex: 0 0 35px;
+  height: 1px;
+  background-color: var(--text-dark);
+  opacity: 0.5;
+}
+
+.res-cards {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.res-card {
+  flex: 1;
+  background: var(--sand);
+  padding: 2.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.res-card svg {
+  margin-bottom: 1.25rem;
+}
+
+.res-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem;
+}
+
+.res-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.res-note {
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+}
+
+.res-badges {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.res-badges span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.res-note-bottom {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.res-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.res-form-wrapper {
+  background: var(--sand);
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.res-form-wrapper h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  font-family: var(--font-heading);
+}
+
+.res-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--sand-light);
+  color: var(--text-dark);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.05rem;
+  border-radius: 6px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.res-form-footer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.res-form-footer span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.res-bottom {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, var(--sand-light) 0%, #D4C9BD 100%);
+}
+
+.res-bottom-text {
+  font-size: 1.25rem;
+  font-family: var(--font-body);
+  color: var(--text-dark);
+}
+
+.res-bottom-text .italic {
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .res-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .res-hero {
+    padding: 5rem 2rem;
+  }
+  .res-hero-content {
+    margin-left: 0;
+  }
+  .res-right {
+    justify-content: center;
+  }
+}

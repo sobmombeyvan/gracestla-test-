@@ -1,0 +1,195 @@
+.suc-hero {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: linear-gradient(rgba(240, 230, 220, 0.7), rgba(240, 230, 220, 0.5)), url('/hero_bg.png');
+  background-size: cover;
+  background-position: center top;
+  padding: 6rem 2rem;
+}
+
+.suc-hero-content {
+  color: var(--text-dark);
+  animation: fadeIn 1s ease-out;
+}
+
+.suc-hero-title {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  font-family: var(--font-heading);
+}
+
+.suc-hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.suc-hero-text {
+  font-size: 1.15rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.suc-main {
+  padding: 5rem 2rem 8rem;
+  background-color: #FAF8F5;
+  background: linear-gradient(to bottom, #FAFAF6 0%, #EBE5DF 100%);
+}
+
+.suc-container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.suc-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.suc-header h2 {
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  margin: 0;
+}
+
+.suc-header .line {
+  flex: 0 0 60px;
+  height: 1px;
+  background-color: var(--text-dark);
+  opacity: 0.4;
+}
+
+.suc-card {
+  background: var(--sand-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.suc-date {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+}
+
+.suc-date .bold {
+  font-weight: 600;
+}
+
+.suc-date .separator {
+  color: rgba(0,0,0,0.2);
+  margin: 0 0.5rem;
+  font-weight: 300;
+}
+
+.suc-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  margin-bottom: 2.5rem;
+}
+
+.suc-details .icon-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.suc-calendar-btn {
+  font-size: 1.05rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: 4px;
+  background-color: #52828D;
+  transition: background-color 0.3s;
+}
+
+.suc-calendar-btn:hover {
+  background-color: #3C6873;
+}
+
+.suc-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4rem;
+}
+
+.suc-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.suc-benefits li svg {
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.small-header {
+  margin-bottom: 2rem;
+}
+
+.italic-heading {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.long-line {
+  flex: 0 0 100px !important;
+  opacity: 0.2 !important;
+}
+
+.suc-note {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .suc-hero-title {
+    font-size: 2.2rem;
+  }
+  .suc-header .line {
+    flex: 0 0 30px;
+  }
+  .long-line {
+    flex: 0 0 50px !important;
+  }
+  .suc-date {
+    font-size: 1.3rem;
+  }
+  .suc-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
