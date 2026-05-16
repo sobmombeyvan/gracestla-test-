@@ -1,0 +1,347 @@
+.program-page {
+  padding: 60px 0;
+  background-color: var(--white);
+  color: var(--text-color);
+}
+
+.program-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.program-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.program-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Intro Section */
+.program-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 992px) {
+  .program-intro {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.intro-block {
+  flex: 1;
+  background-image: url('https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=800&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 12px;
+  padding: 40px 30px;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Background for the first intro block - Airplane */
+.intro-block:first-child {
+  background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop');
+}
+
+/* Background for the second intro block - Family */
+.intro-block:last-child {
+  background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop');
+}
+
+.intro-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85); /* Semi-transparent overlay to read text */
+  z-index: 1;
+}
+
+.intro-block > * {
+  position: relative;
+  z-index: 2;
+}
+
+.intro-block h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.intro-block p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.intro-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.intro-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.intro-list svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--teal);
+}
+
+.intro-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-badge {
+  background-color: var(--sand-light);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.circle-badge p {
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* Role Section */
+.program-role {
+  padding: 50px;
+  border-radius: 12px;
+  margin-bottom: 60px;
+}
+
+.role-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.role-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media (min-width: 992px) {
+  .steps-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.step-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.step-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--teal);
+}
+
+.step-item h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.step-item p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.step-arrow {
+  display: none;
+  align-self: center;
+  margin-top: -30px;
+}
+
+@media (min-width: 992px) {
+  .step-arrow {
+    display: block;
+  }
+}
+
+.step-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Bottom Benefits Section */
+.program-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media (min-width: 992px) {
+  .program-benefits {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+.benefit-card {
+  flex: 1;
+  padding: 40px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.benefit-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.benefit-list svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.benefit-icon-corner {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0.1;
+}
+
+.benefit-icon-corner svg {
+  width: 80px;
+  height: 80px;
+}
+
+.benefit-center {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .benefit-center {
+    width: 300px;
+    height: auto;
+  }
+}
+
+.benefit-center-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-box {
+  background: var(--white);
+  padding: 30px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.overlay-box h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.overlay-box p {
+  font-size: 0.85rem;
+  margin: 0;
+  color: var(--text-light);
+}

@@ -82,19 +82,25 @@
   display: flex;
   justify-content: center;
   gap: 8px;
+  position: relative;
+  z-index: 10;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   background-color: rgba(0,0,0,0.15);
   border-radius: 50%;
   display: inline-block;
   cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 6px;
+  background-clip: content-box;
 }
 
 .dot.active {
   background-color: var(--teal);
+  transform: scale(1.2);
 }
 
 .cta-container {

@@ -84,10 +84,10 @@ const AuPairForm = () => {
 
             <div className="ap-form-right">
                <div className="ap-image-wrapper">
-                 <img src="/why_2.png" alt="Grace" className="ap-image" />
+                 <img src="https://i.ibb.co/d0jRLnsN/151329-E8-8784-4601-96-D2-A7-C219-F03-ACB.png" alt="Grace" className="ap-image" />
                </div>
                <div className="ap-right-text">
-                 Grâce ou l'un de ses<br />collègues vont te répondre
+                 nous répondons à toutes vos questions
                </div>
             </div>
 

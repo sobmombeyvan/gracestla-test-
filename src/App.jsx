@@ -13,6 +13,9 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import BookingCalendar from './pages/BookingCalendar';
+import Program from './pages/Program';
+import LegalMentions from './pages/LegalMentions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/programme" element={<Program />} />
+            <Route path="/mentions-legales" element={<LegalMentions />} />
+            <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
           </Routes>
         </main>
         <Footer />

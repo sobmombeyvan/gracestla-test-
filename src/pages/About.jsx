@@ -82,7 +82,7 @@ const About = () => {
           <div className="about-founder-section">
             <div className="founder-image-container">
               <img 
-                src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                src="https://i.ibb.co/sdQVBqXn/PHOTO-2026-04-21-12-36-05-2.jpg" 
                 alt="Gracela - Fondatrice" 
                 className="founder-img"
                 onError={(e) => {
