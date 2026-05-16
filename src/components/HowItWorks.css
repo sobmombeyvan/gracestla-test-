@@ -60,5 +60,38 @@
 @media (max-width: 768px) {
   .steps-grid {
     grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .step-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+
+  .step-card:not(:last-child)::after {
+    content: "↓";
+    position: absolute;
+    bottom: -2.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--teal);
+    opacity: 0.6;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-header .line {
+    flex: 0 0 20px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
   }
 }
