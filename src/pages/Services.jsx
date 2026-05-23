@@ -18,8 +18,8 @@ const Services = () => {
           </div>
           <div className="s-hero-img-box">
             <img 
-              src="https://images.unsplash.com/photo-1542596594-649edbc13630?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-              alt="Femmes souriantes sur ordinateur" 
+              src="https://i.ibb.co/273B1nmf/PHOTO-2026-05-19-14-36-07-2.jpg" 
+              alt="Services Grâce est là" 
               className="s-hero-img"
             />
           </div>
@@ -37,8 +37,10 @@ const Services = () => {
               <div className="s-step-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
               </div>
-              <h3 className="s-step-title">1. Compréhension</h3>
-              <p className="s-step-desc">Nous prenons le temps de comprendre vos besoins, vos attentes et votre situation.</p>
+              <div className="s-step-content">
+                <h3 className="s-step-title">1. Compréhension</h3>
+                <p className="s-step-desc">Nous prenons le temps de comprendre vos besoins, vos attentes et votre situation.</p>
+              </div>
             </div>
             
             <div className="s-step-line"></div>
@@ -48,8 +50,10 @@ const Services = () => {
               <div className="s-step-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><path d="M11 8v6" /><path d="M8 11h6" /></svg>
               </div>
-              <h3 className="s-step-title">2. Sélection</h3>
-              <p className="s-step-desc">Nous recherchons ou orientons vers les profils les plus adaptés.</p>
+              <div className="s-step-content">
+                <h3 className="s-step-title">2. Sélection</h3>
+                <p className="s-step-desc">Nous recherchons ou orientons vers les profils les plus adaptés.</p>
+              </div>
             </div>
 
             <div className="s-step-line"></div>
@@ -59,8 +63,10 @@ const Services = () => {
               <div className="s-step-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><path d="M8 10h.01" /><path d="M12 10h.01" /><path d="M16 10h.01" /></svg>
               </div>
-              <h3 className="s-step-title">3. Échanges</h3>
-              <p className="s-step-desc">Nous facilitons les échanges et vous aidons à mieux vous connaître.</p>
+              <div className="s-step-content">
+                <h3 className="s-step-title">3. Échanges</h3>
+                <p className="s-step-desc">Nous facilitons les échanges et vous aidons à mieux vous connaître.</p>
+              </div>
             </div>
 
             <div className="s-step-line"></div>
@@ -70,8 +76,10 @@ const Services = () => {
               <div className="s-step-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
               </div>
-              <h3 className="s-step-title">4. Préparation</h3>
-              <p className="s-step-desc">Nous préparons chaque partie pour une arrivée sereine et bien cadrée.</p>
+              <div className="s-step-content">
+                <h3 className="s-step-title">4. Préparation</h3>
+                <p className="s-step-desc">Nous préparons chaque partie pour une arrivée sereine et bien cadrée.</p>
+              </div>
             </div>
 
             <div className="s-step-line"></div>
@@ -81,8 +89,10 @@ const Services = () => {
               <div className="s-step-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
               </div>
-              <h3 className="s-step-title">5. Suivi</h3>
-              <p className="s-step-desc">Nous restons à vos côtés après le début de l'expérience, pour assurer son bon déroulé.</p>
+              <div className="s-step-content">
+                <h3 className="s-step-title">5. Suivi</h3>
+                <p className="s-step-desc">Nous restons à vos côtés après le début de l'expérience, pour assurer son bon déroulé.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -97,7 +107,7 @@ const Services = () => {
             {/* Au Pair Card */}
             <div className="s-card">
               <div className="s-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jeune au pair" />
+                <img src="https://i.ibb.co/TxrWwd4f/PHOTO-2026-05-19-14-36-06.jpg" alt="Jeune au pair" />
                 <div className="s-card-badge">
                   <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
                 </div>
@@ -123,7 +133,7 @@ const Services = () => {
             {/* Family Card */}
             <div className="s-card">
               <div className="s-card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Familles d'accueil" />
+                <img src="https://i.ibb.co/Xkxypbvs/PHOTO-2026-05-19-14-36-07-3.jpg" alt="Familles d'accueil" />
                 <div className="s-card-badge">
                   <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
                 </div>
@@ -195,7 +205,7 @@ const Services = () => {
         <div className="container">
           <div className="s-cta-box">
              <div className="s-cta-img-col">
-                <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mug de café chaud" />
+                <img src="https://i.ibb.co/tT63n0kT/PHOTO-2026-05-19-14-36-07.jpg" alt="Accompagnement Grâce est là" />
              </div>
              <div className="s-cta-content">
                 <h2 className="s-cta-title">Prêt à vivre une belle expérience<br/>au pair en toute sérénité ?</h2>

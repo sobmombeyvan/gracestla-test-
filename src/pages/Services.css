@@ -137,10 +137,23 @@
   align-items: center;
   background: white; /* to cut out the dotted line slightly */
   border-radius: 50%;
+  border: 1.5px solid rgba(60, 162, 162, 0.15);
+  box-shadow: 0 4px 15px rgba(60, 162, 162, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+.s-step:hover .s-step-icon {
+  transform: translateY(-4px);
+  border-color: rgba(60, 162, 162, 0.4);
+  box-shadow: 0 8px 25px rgba(60, 162, 162, 0.12);
 }
 .s-step-icon svg {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+.s-step:hover .s-step-icon svg {
+  transform: scale(1.05);
 }
 .s-step-title {
   font-size: 1rem;
@@ -331,6 +344,80 @@
 }
 
 @media (max-width: 768px) {
+  .s-steps-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    position: relative;
+    padding-left: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .s-steps-row::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    bottom: 25px;
+    left: calc(1.5rem + 25px);
+    width: 2px;
+    border-left: 2px dashed rgba(60, 162, 162, 0.4);
+    z-index: 1;
+  }
+
+  .s-step {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 100%;
+    width: 100%;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .s-step:hover .s-step-icon {
+    transform: none; /* Disable translation hover effect on touch screens */
+  }
+
+  .s-step-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    background: white;
+    border: 2px solid rgba(60, 162, 162, 0.25);
+    box-shadow: 0 4px 12px rgba(60, 162, 162, 0.08);
+  }
+
+  .s-step-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .s-step-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .s-step-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark, #2D3142);
+    margin-bottom: 0.3rem;
+    margin-top: 0.2rem;
+  }
+
+  .s-step-desc {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
   .s-feat-grid { grid-template-columns: 1fr 1fr; }
   .s-cta-box { flex-direction: column; }
   .s-cta-img-col { width: 100%; height: 200px; }

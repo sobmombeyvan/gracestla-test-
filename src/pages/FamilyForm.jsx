@@ -15,14 +15,31 @@ const FamilyForm = () => {
       <section className="fam-hero">
         <div className="container">
           <div className="fam-hero-content">
-            <h1 className="fam-hero-title">Parlez-nous de votre famille</h1>
+            <h1 className="fam-hero-title">Derrière chaque famille,<br />il y a une vraie histoire</h1>
+            
+            <div className="fam-hero-bullets">
+              <div className="fam-hero-bullet-item">
+                <span className="fam-hero-bullet-dot"></span>
+                <span>Une organisation à gérer.</span>
+              </div>
+              <div className="fam-hero-bullet-item">
+                <span className="fam-hero-bullet-dot"></span>
+                <span>Des enfants à accompagner.</span>
+              </div>
+              <div className="fam-hero-bullet-item">
+                <span className="fam-hero-bullet-dot"></span>
+                <span>Un équilibre à préserver.</span>
+              </div>
+            </div>
+
             <p className="fam-hero-subtitle bold-sub">
-              Quelques minutes pour nous partager votre<br />
-              famille & votre projet au pair
+              Chez Grâce est là, nous savons qu'une jeune au pair ne doit pas seulement "aider".<br />
+              Elle doit aussi s'intégrer humainement à votre foyer.
             </p>
-            <p className="fam-hero-subtitle">
-              Partagez votre situation afin que Grâce puisse<br />
-              vraiment vous aider à trouver la bonne personne.
+            
+            <p className="fam-hero-subtitle fam-hero-last-paragraph">
+              Prenez quelques minutes pour nous parler de votre famille.<br />
+              Nous nous chargeons du reste avec attention, écoute et exigence.
             </p>
           </div>
         </div>

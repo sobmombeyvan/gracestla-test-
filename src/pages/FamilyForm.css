@@ -35,6 +35,40 @@
   font-weight: 500;
   font-size: 1.25rem;
   color: var(--text-dark);
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.fam-hero-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.fam-hero-bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.fam-hero-bullet-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--teal, #3CA2A2);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(60, 162, 162, 0.4);
+}
+
+.fam-hero-last-paragraph {
+  font-size: 1.08rem;
+  color: #5A5650;
+  line-height: 1.6;
 }
 
 .fam-main {
