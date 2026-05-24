@@ -6,16 +6,24 @@
 
 .legal-page h1 {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: var(--text-color);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 24px;
+  color: var(--text-dark);
   text-align: center;
+}
+
+.legal-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  color: var(--text-light);
+  font-size: 1.05rem;
 }
 
 .legal-content {
   max-width: 800px;
   margin: 0 auto;
-  color: var(--text-color);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
@@ -27,7 +35,122 @@
   color: var(--teal);
 }
 
+.legal-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  color: var(--brown);
+}
+
 .legal-content p {
   margin-bottom: 15px;
   font-size: 1rem;
+}
+
+.legal-content ul {
+  margin: 0 0 15px 1.25rem;
+}
+
+.legal-content li {
+  margin-bottom: 8px;
+}
+
+.legal-content a {
+  color: var(--teal);
+  text-decoration: underline;
+}
+
+.legal-content a:hover {
+  color: var(--teal-hover);
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid var(--sand);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  transition: color 0.2s;
+}
+
+.faq-question:hover {
+  color: var(--teal);
+}
+
+.faq-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--teal);
+  transition: transform 0.25s ease;
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 800px;
+}
+
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem;
+  color: var(--text-dark);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.faq-answer-inner p {
+  margin: 0 0 12px;
+}
+
+.faq-answer-inner ul {
+  margin: 0 0 12px 1.25rem;
+}
+
+.faq-answer-inner a {
+  color: var(--teal);
+  text-decoration: underline;
+}
+
+.faq-cta {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.faq-cta a {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
 }

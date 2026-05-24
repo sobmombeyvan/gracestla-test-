@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
@@ -6,13 +6,16 @@ const Header = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', isMenuOpen);
+    return () => document.body.classList.remove('menu-open');
+  }, [isMenuOpen]);
 
-  const closeMenu = () => {
+  useEffect(() => {
     setIsMenuOpen(false);
-  };
+  }, [location.pathname]);
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   const navLinks = [
     { path: '/', label: 'Accueil' },
@@ -28,37 +31,56 @@ const Header = () => {
     <header className="main-header">
       <div className="container header-container">
         <Link to="/" className="logo-link" onClick={closeMenu}>
-          <div className="logo-wrapper">
-             <img src="https://i.ibb.co/hJZCdQZV/a58c51a0-e528-4428-9001-dc5f2980819c.jpg" alt="Logo" style={{ height: '85px', width: 'auto', objectFit: 'contain' }} />
-          </div>
+          <img
+            src="https://i.ibb.co/hJZCdQZV/a58c51a0-e528-4428-9001-dc5f2980819c.jpg"
+            alt="Grâce est là"
+            className="header-logo-img"
+          />
         </Link>
 
-        {/* Hamburger Toggle */}
-        <button className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu} aria-label="Toggle navigation">
+        <button
+          type="button"
+          className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-expanded={isMenuOpen}
+        >
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <nav className={`header-nav ${isMenuOpen ? 'mobile-open' : ''}`}>
+        {isMenuOpen && (
+          <button
+            type="button"
+            className="nav-overlay"
+            onClick={closeMenu}
+            aria-label="Fermer le menu"
+          />
+        )}
+
+        <nav className={`header-nav ${isMenuOpen ? 'mobile-open' : ''}`} aria-label="Navigation principale">
           {navLinks.map((link) => (
-             <Link 
-                key={link.path} 
-                to={link.path} 
-                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                onClick={closeMenu}
-             >
-                {link.label}
-             </Link>
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+              onClick={closeMenu}
+            >
+              {link.label}
+            </Link>
           ))}
-          <Link to="/reservation" className="btn btn-primary header-btn mobile-only-btn" onClick={closeMenu}>Je suis intéressé(e)</Link>
+          <Link to="/reservation" className="btn btn-primary header-btn mobile-only-btn" onClick={closeMenu}>
+            Je suis intéressé(e)
+          </Link>
         </nav>
-        
-        <Link to="/reservation" className="btn btn-primary header-btn desktop-only-btn">Je suis intéressé(e)</Link>
+
+        <Link to="/reservation" className="btn btn-primary header-btn desktop-only-btn">
+          Je suis intéressé(e)
+        </Link>
       </div>
     </header>
   );
 };
 
 export default Header;
-

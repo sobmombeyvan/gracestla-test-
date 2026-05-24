@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Legal.css';
 
 const PrivacyPolicy = () => {
@@ -28,7 +29,14 @@ const PrivacyPolicy = () => {
             Vos données sont conservées pour la durée nécessaire au traitement de votre demande et conformément aux obligations légales.
           </p>
           
-          <h2>4. Vos droits</h2>
+          <h2>4. Cookies</h2>
+          <p>
+            Lors de votre visite, un cookie peut être déposé pour mémoriser votre choix
+            concernant l'utilisation des cookies (consentement ou refus). Pour en savoir
+            plus, consultez notre <Link to="/politique-cookies">politique de cookies</Link>.
+          </p>
+
+          <h2>5. Vos droits</h2>
           <p>
             Conformément à la réglementation applicable (RGPD), vous disposez d'un droit d'accès, de rectification, d'effacement, et de portabilité de vos données personnelles. Vous pouvez exercer ces droits à tout moment en nous contactant à l'adresse suivante : contact@graceestla.com.
           </p>

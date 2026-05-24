@@ -16,14 +16,18 @@ import BookingCalendar from './pages/BookingCalendar';
 import Program from './pages/Program';
 import LegalMentions from './pages/LegalMentions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import FAQ from './pages/FAQ';
+import CookiePolicy from './pages/CookiePolicy';
+import CookieBanner from './components/CookieBanner';
 
 
 function App() {
   return (
     <Router>
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div className="app-shell">
+        <CookieBanner />
         <Header />
-        <main style={{ flex: 1 }}>
+        <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/reservation" element={<Reservation />} />
@@ -39,6 +43,8 @@ function App() {
             <Route path="/programme" element={<Program />} />
             <Route path="/mentions-legales" element={<LegalMentions />} />
             <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
+            <Route path="/politique-cookies" element={<CookiePolicy />} />
+            <Route path="/faq" element={<FAQ />} />
           </Routes>
         </main>
         <Footer />

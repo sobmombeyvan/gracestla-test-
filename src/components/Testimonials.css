@@ -114,10 +114,19 @@
 }
 
 @media (max-width: 768px) {
+  .testimonials {
+    padding: 3rem 1.25rem 4rem;
+  }
   .testimonial-box {
     flex-direction: column;
     text-align: center;
     padding: 1.5rem;
+  }
+  .cta-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
   }
   .testimonial-image-container {
     margin-right: 0;

@@ -36,13 +36,19 @@
   width: 100%;
   padding: 0.8rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
   font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(29, 178, 170, 0.15);
+}
+.contact-form .btn-primary {
+  width: 100%;
+  padding: 0.9rem 1.5rem;
 }
 @media (max-width: 600px) {
   .contact-form {

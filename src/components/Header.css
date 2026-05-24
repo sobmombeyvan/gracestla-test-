@@ -1,24 +1,35 @@
 .main-header {
   background: var(--white);
-  padding: 1.25rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
 }
+
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
+
 .logo-link {
   text-decoration: none;
-  color: var(--text-dark);
+  flex-shrink: 0;
+  z-index: 1100;
 }
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+
+.header-logo-img {
+  height: 72px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-overlay {
+  display: none;
 }
 .logo-icon-svg {
   width: 55px;
@@ -139,29 +150,47 @@
 }
 
 @media (max-width: 900px) {
+  .header-logo-img {
+    height: 56px;
+  }
+
   .menu-toggle {
     display: flex;
+    z-index: 1100;
   }
 
   .desktop-only-btn {
     display: none;
   }
 
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(90, 58, 43, 0.4);
+    border: none;
+    cursor: pointer;
+    z-index: 1040;
+    backdrop-filter: blur(2px);
+  }
+
   .header-nav {
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
-    width: 280px;
+    height: 100dvh;
+    width: min(300px, 88vw);
     background: var(--white);
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    align-items: stretch;
+    gap: 0;
+    padding: 5rem 1.5rem 2rem;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
     z-index: 1050;
+    overflow-y: auto;
   }
 
   .header-nav.mobile-open {
@@ -169,27 +198,28 @@
   }
 
   .nav-link {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-link.active::after {
+    display: none;
   }
 
   .mobile-only-btn {
     display: block;
-    margin-top: 1rem;
-    width: 80%;
-    text-align: center;
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.85rem 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .header-logo {
-     font-size: 2rem;
-  }
-  .logo-estla {
-    font-size: 1.8rem;
-  }
-  .logo-icon-svg {
-    width: 45px;
-    height: 35px;
+  .header-logo-img {
+    height: 48px;
   }
 }
 

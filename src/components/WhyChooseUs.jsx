@@ -13,7 +13,7 @@ const WhyChooseUs = () => {
 
         <div className="cards-grid">
           <div className="feature-card">
-            <img src="https://i.ibb.co/ynsRxK1f/345c1e8d-0705-4f69-876f-a0b9d3709821.jpg" alt="Sécurité & Confiance" className="feature-img" />
+            <img src="https://i.ibb.co/jZhXnxWW/host-family-in-7-steps-1422.jpg" alt="Sécurité & Confiance" className="feature-img" />
             <div className="feature-content text-center">
               <h3 className="feature-title">Sécurité & Confiance</h3>
               <p className="feature-description">Un accompagnement rassurant</p>

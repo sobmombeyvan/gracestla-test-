@@ -1,14 +1,14 @@
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: clamp(420px, 75vh, 720px);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   text-align: left;
-  background-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%), url('https://i.ibb.co/ynsRxK1f/345c1e8d-0705-4f69-876f-a0b9d3709821.jpg');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.25) 60%, rgba(0, 0, 0, 0.15) 100%), url('https://i.ibb.co/ynsRxK1f/345c1e8d-0705-4f69-876f-a0b9d3709821.jpg');
   background-size: cover;
-  background-position: center top;
-  padding: 10rem 4rem;
+  background-position: center center;
+  padding: clamp(5rem, 12vw, 10rem) clamp(1.25rem, 5vw, 4rem);
 }
 
 .hero-content {
@@ -20,9 +20,9 @@
 
 .hero-title {
   color: var(--white);
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 1rem;
   font-family: var(--font-heading);
 }
@@ -45,13 +45,16 @@
 }
 
 @media (max-width: 768px) {
-  .hero {
-    padding: 6rem 2rem;
-  }
   .hero-content {
     margin-left: 0;
+    max-width: 100%;
   }
-  .hero-title {
-    font-size: 2.5rem;
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .hero-btn {
+    width: 100%;
+    max-width: 280px;
   }
 }

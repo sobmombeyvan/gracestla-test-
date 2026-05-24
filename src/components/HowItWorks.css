@@ -2,28 +2,6 @@
   background-color: var(--sand-light);
 }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 4rem;
-}
-
-.section-header .line {
-  flex: 0 0 40px;
-  height: 1px;
-  background-color: var(--text-dark);
-  opacity: 0.5;
-}
-
-.section-title {
-  font-size: 1.75rem;
-  color: var(--text-dark);
-  margin-bottom: 0;
-  font-weight: 500;
-}
-
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -83,15 +61,4 @@
     opacity: 0.6;
   }
 
-  .section-header {
-    margin-bottom: 3rem;
-  }
-
-  .section-header .line {
-    flex: 0 0 20px;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-  }
 }
