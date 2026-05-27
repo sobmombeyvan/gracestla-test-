@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import LanguageSwitcher from './LanguageSwitcher';
 import './Header.css';
 
 const Header = () => {
@@ -20,11 +21,12 @@ const Header = () => {
   const navLinks = [
     { path: '/', label: 'Accueil' },
     { path: '/programme', label: 'Le Programme' },
-    { path: '/au-pair', label: 'Jeune au pair' },
-    { path: '/famille', label: "Familles d'accueil" },
+    { path: '/au-pair', label: 'Au pair' },
+    { path: '/famille', label: 'Famille' },
     { path: '/services', label: 'Services' },
     { path: '/a-propos', label: 'À propos' },
     { path: '/contact', label: 'Contact' },
+    { path: '/dashboard', label: 'Se connecter' },
   ];
 
   return (
@@ -70,14 +72,20 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
+          <div className="header-mobile-lang notranslate">
+            <LanguageSwitcher />
+          </div>
           <Link to="/reservation" className="btn btn-primary header-btn mobile-only-btn" onClick={closeMenu}>
             Je suis intéressé(e)
           </Link>
         </nav>
 
-        <Link to="/reservation" className="btn btn-primary header-btn desktop-only-btn">
-          Je suis intéressé(e)
-        </Link>
+        <div className="header-actions">
+          <LanguageSwitcher compact />
+          <Link to="/reservation" className="btn btn-primary header-btn desktop-only-btn">
+            Je suis intéressé(e)
+          </Link>
+        </div>
       </div>
     </header>
   );

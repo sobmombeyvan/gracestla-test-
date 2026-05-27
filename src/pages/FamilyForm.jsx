@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CountrySelect from '../components/CountrySelect';
 import './FamilyForm.css';
 
 const FamilyForm = () => {
@@ -84,7 +85,7 @@ const FamilyForm = () => {
                 </div>
                 <div className="fam-form-group">
                   <label>Pays de résidence</label>
-                  <input type="text" className="fam-input" placeholder="Ex: Belgique, Canada, etc." required />
+                  <CountrySelect name="country" inputClassName="fam-input" required />
                 </div>
               </div>
 

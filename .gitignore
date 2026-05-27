@@ -20,6 +20,8 @@ build
 
 # Environment variables
 .env
+.env.*
+!.env.example
 .env.local
 .env.development.local
 .env.test.local
@@ -47,3 +49,9 @@ Thumbs.db
 
 # Testing
 coverage
+
+# Deployment / local tools
+.vercel
+.netlify
+supabase/.temp
+supabase/.branches

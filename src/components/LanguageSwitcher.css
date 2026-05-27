@@ -1,0 +1,106 @@
+/* Masquer la barre Google par défaut */
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+
+.lang-switcher-widget {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lang-switcher {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lang-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(139, 107, 86, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #5a4034;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.lang-switcher-btn:hover {
+  border-color: var(--teal, #1db2aa);
+  color: #1a6b66;
+}
+
+.lang-switcher--compact .lang-switcher-btn {
+  padding: 0.45rem;
+  border-radius: 50%;
+}
+
+.lang-switcher-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  border: none;
+  background: transparent;
+  cursor: default;
+}
+
+.lang-switcher-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 200;
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  min-width: 160px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.lang-switcher-menu li button {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #3d2c24;
+}
+
+.lang-switcher-menu li button:hover,
+.lang-switcher-menu li button.is-active {
+  background: rgba(29, 178, 170, 0.12);
+  color: #1a6b66;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .lang-switcher-menu {
+    right: auto;
+    left: 0;
+  }
+}

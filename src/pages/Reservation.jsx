@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FormFeedback } from '../components/FormFeedback';
+import { usePublicFormSubmit } from '../hooks/usePublicFormSubmit';
 import './Reservation.css';
 
 const Reservation = () => {
   const navigate = useNavigate();
+  const { handleSubmit, loading, error } = usePublicFormSubmit({
+    type: 'reservation',
+    needsBooking: true,
+    onSuccess: () => navigate('/calendrier'),
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,27 +99,30 @@ const Reservation = () => {
           <div className="res-right">
             <div className="res-form-wrapper">
               <h2>Réservez votre appel</h2>
-              <form className="res-form" onSubmit={(e) => { e.preventDefault(); navigate('/calendrier'); }}>
+              <FormFeedback error={error} loading={loading} />
+              <form className="res-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label>Votre nom</label>
-                  <input type="text" className="input-field" />
+                  <input type="text" name="name" className="input-field" required />
                 </div>
                 <div className="form-group">
                   <label>Votre email</label>
-                  <input type="email" className="input-field" />
+                  <input type="email" name="email" className="input-field" required />
                 </div>
                 <div className="form-group">
                   <label>Vous êtes</label>
-                  <select className="input-field">
-                    <option>Je suis un(e) au pair</option>
-                    <option>Je suis une famille</option>
+                  <select name="role" className="input-field" required>
+                    <option value="aupair">Je suis un(e) au pair</option>
+                    <option value="family">Je suis une famille</option>
                   </select>
                 </div>
                 <div className="form-group">
                   <label>Votre situation</label>
-                  <textarea className="input-field" placeholder="Décrivez votre situation" rows="4"></textarea>
+                  <textarea name="situation" className="input-field" placeholder="Décrivez votre situation" rows="4" required></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary submit-btn">Réserver mon appel</button>
+                <button type="submit" className="btn btn-primary submit-btn" disabled={loading}>
+                  {loading ? 'Envoi…' : 'Réserver mon appel'}
+                </button>
               </form>
               
               <div className="res-form-footer">

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FormFeedback } from '../components/FormFeedback';
+import { isSupabaseConfigured } from '../lib/supabase';
+import { loadPendingBooking, clearPendingBooking } from '../lib/formData';
+import { createBooking } from '../services/bookings';
 import './BookingCalendar.css';
 
 const BookingCalendar = () => {
@@ -7,6 +11,8 @@ const BookingCalendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 6, 1)); // July 2026
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,21 +41,56 @@ const BookingCalendar = () => {
   }
 
   const times = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30'];
+  const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+  const weekdayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
-  const handleConfirm = () => {
-    if (selectedDate && selectedTime) {
-      const dateString = `${selectedDate} Juillet 2026`;
-      localStorage.setItem('bookedDate', dateString);
-      localStorage.setItem('bookedTime', selectedTime);
+  const handleConfirm = async () => {
+    if (!selectedDate || !selectedTime) return;
+
+    const year = currentMonth.getFullYear();
+    const month = currentMonth.getMonth();
+    const [hours, minutes] = selectedTime.split(':').map(Number);
+    const start = new Date(year, month, selectedDate, hours, minutes, 0);
+
+    const displayDate = `${weekdayNames[start.getDay()]} ${selectedDate} ${monthNames[month].toLowerCase()} ${year}`;
+    const displayTime = selectedTime.replace(':', 'h');
+
+    localStorage.setItem('bookedDate', displayDate);
+    localStorage.setItem('bookedTime', displayTime);
+    localStorage.setItem('bookedStartISO', start.toISOString());
+
+    if (!isSupabaseConfigured) {
+      setError('Supabase n’est pas configuré. Le créneau est affiché localement uniquement.');
       navigate('/success');
+      return;
+    }
+
+    const pending = loadPendingBooking();
+    setSaving(true);
+    setError(null);
+
+    try {
+      await createBooking({
+        submissionId: pending?.submissionId,
+        email: pending?.email,
+        name: pending?.name,
+        startsAt: start.toISOString(),
+        displayDate,
+        displayTime,
+      });
+      clearPendingBooking();
+      navigate('/success');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Impossible de confirmer le rendez-vous.');
+    } finally {
+      setSaving(false);
     }
   };
-
-  const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 
   return (
     <div className="calendar-page">
       <div className="container">
+        <FormFeedback error={error} loading={saving} />
         <div className="calendar-layout">
           <div className="calendar-left">
             <h2>Sélectionnez une date</h2>
@@ -100,8 +141,13 @@ const BookingCalendar = () => {
                 </div>
                 
                 {selectedTime && (
-                  <button className="btn btn-primary next-btn animated-slide-up" onClick={handleConfirm}>
-                    Suivant
+                  <button
+                    type="button"
+                    className="btn btn-primary next-btn animated-slide-up"
+                    onClick={handleConfirm}
+                    disabled={saving}
+                  >
+                    {saving ? 'Confirmation…' : 'Suivant'}
                   </button>
                 )}
               </div>

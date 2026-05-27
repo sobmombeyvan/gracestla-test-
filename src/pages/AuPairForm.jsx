@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CountrySelect from '../components/CountrySelect';
 import './AuPairForm.css';
 
 const AuPairForm = () => {
@@ -48,7 +49,7 @@ const AuPairForm = () => {
                 </div>
                 <div className="ap-form-group">
                   <label>Ton pays de résidence actuel</label>
-                  <input type="text" className="ap-input" placeholder="Ex: France, Sénégal, Canada..." required />
+                  <CountrySelect name="country" inputClassName="ap-input" required />
                 </div>
                 <div className="ap-form-group">
                   <label>Numéro de téléphone <span className="italic">(optionnel)</span></label>

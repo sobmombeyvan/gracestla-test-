@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Testimonials.css';
 
@@ -37,6 +37,33 @@ const testimonialsData = [
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timeoutRef = useRef(null);
+
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  useEffect(() => {
+    if (isPaused) {
+      resetTimeout();
+      return;
+    }
+
+    resetTimeout();
+    timeoutRef.current = setTimeout(() => {
+      setCurrentIndex((prevIndex) => 
+        prevIndex === testimonialsData.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 6000); // Change testimonial every 6 seconds
+
+    return () => {
+      resetTimeout();
+    };
+  }, [currentIndex, isPaused]);
+
   const current = testimonialsData[currentIndex];
 
   return (
@@ -48,8 +75,12 @@ const Testimonials = () => {
           <span className="line"></span>
         </div>
 
-        <div className="testimonial-box">
-          <div className="testimonial-text-container">
+        <div 
+          className="testimonial-box"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="testimonial-text-container" key={currentIndex}>
             <span className="quote-mark open" aria-hidden="true">"</span>
             <p className="quote">{current.quote}</p>
             <span className="quote-mark close" aria-hidden="true">"</span>
@@ -67,7 +98,10 @@ const Testimonials = () => {
               aria-selected={index === currentIndex}
               aria-label={`Témoignage ${index + 1}`}
               className={`dot ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => {
+                setCurrentIndex(index);
+                setIsPaused(false); // resume standard auto-sliding behavior with a fresh timer
+              }}
             />
           ))}
         </div>

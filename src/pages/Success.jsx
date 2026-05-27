@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { downloadCalendarEvent, getBookedStartDate } from '../utils/calendar';
 import './Success.css';
 
 const Success = () => {
-  const [bookedDate, setBookedDate] = React.useState('Mardi 2 juillet');
-  const [bookedTime, setBookedTime] = React.useState('11h00');
+  const [bookedDate, setBookedDate] = useState('Mardi 2 juillet');
+  const [bookedTime, setBookedTime] = useState('11h00');
+  const [calendarError, setCalendarError] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -12,6 +14,15 @@ const Success = () => {
     if (date) setBookedDate(date);
     if (time) setBookedTime(time);
   }, []);
+
+  const handleAddToCalendar = () => {
+    setCalendarError('');
+    const start = getBookedStartDate();
+    const ok = downloadCalendarEvent({ start });
+    if (!ok) {
+      setCalendarError('Impossible de générer le fichier calendrier. Réessayez ou utilisez le lien dans votre email.');
+    }
+  };
 
   return (
     <div className="success-page">
@@ -43,7 +54,12 @@ const Success = () => {
                 Visio-conférence
               </span>
             </div>
-            <button className="btn btn-primary suc-calendar-btn">Ajouter à mon calendrier</button>
+            <button type="button" className="btn btn-primary suc-calendar-btn" onClick={handleAddToCalendar}>
+              Ajouter à mon calendrier
+            </button>
+            {calendarError && (
+              <p className="suc-calendar-error" role="alert">{calendarError}</p>
+            )}
           </div>
 
           <div className="suc-header">

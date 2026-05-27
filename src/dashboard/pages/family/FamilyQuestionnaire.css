@@ -1,0 +1,153 @@
+.fq-page {
+  max-width: 820px;
+}
+
+.fq-intro p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--dash-gray-600);
+  margin: 0 0 0.75rem;
+}
+
+.fq-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.fq-progress-wrap {
+  margin: 1.25rem 0;
+}
+
+.fq-progress-bar {
+  height: 6px;
+  background: var(--dash-gray-200);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.fq-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0a4f4c, #1db2aa);
+  transition: width 0.3s ease;
+}
+
+.fq-progress-label {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dash-gray-500);
+}
+
+.fq-form {
+  padding: 1.5rem;
+}
+
+.fq-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dash-navy);
+  margin: 0 0 1.25rem;
+  font-family: var(--font-body);
+}
+
+.fq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.fq-field span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dash-navy);
+  line-height: 1.45;
+}
+
+.fq-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--dash-gray-200);
+  border-radius: var(--dash-radius-sm);
+  font-family: inherit;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 96px;
+}
+
+.fq-field input[type='text'],
+.fq-field input[type='number'],
+.fq-field input[type='date'],
+.fq-field select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--dash-gray-200);
+  border-radius: var(--dash-radius-sm);
+  font-family: inherit;
+  font-size: 0.88rem;
+  background: #fff;
+}
+
+.fq-field input[type='text']:focus,
+.fq-field input[type='number']:focus,
+.fq-field input[type='date']:focus,
+.fq-field select:focus,
+.fq-field textarea:focus {
+  outline: none;
+  border-color: #1db2aa;
+  box-shadow: 0 0 0 3px rgba(29, 178, 170, 0.12);
+}
+
+.fq-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--dash-gray-100);
+}
+
+.fq-actions .dash-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.fq-actions .dash-btn-primary {
+  margin-left: auto;
+}
+
+.fq-success {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: var(--dash-white);
+  border-radius: var(--dash-radius);
+  border: 1px solid var(--dash-gray-200);
+}
+
+.fq-success svg {
+  color: #1db2aa;
+  margin-bottom: 1rem;
+}
+
+.fq-success h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--dash-navy);
+}
+
+.fq-success p {
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  color: var(--dash-gray-600);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .fq-actions .dash-btn-primary {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}

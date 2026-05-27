@@ -11,6 +11,8 @@ const Footer = () => {
             <img src="https://i.ibb.co/hJZCdQZV/a58c51a0-e528-4428-9001-dc5f2980819c.jpg" alt="Grâce est là" className="footer-logo" />
           </Link>
           <ul className="footer-links">
+            <li><Link to="/au-pair">Au pair</Link></li>
+            <li><Link to="/famille">Famille</Link></li>
             <li><Link to="/faq">FAQ</Link></li>
             <li><Link to="/mentions-legales">Mentions légales</Link></li>
             <li><Link to="/politique-confidentialite">Politique de confidentialité</Link></li>

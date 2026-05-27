@@ -1,6 +1,6 @@
 .main-header {
   background: var(--white);
-  padding: 0.75rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
@@ -22,8 +22,9 @@
 }
 
 .header-logo-img {
-  height: 72px;
+  height: 96px;
   width: auto;
+  max-width: min(280px, 42vw);
   object-fit: contain;
   display: block;
 }
@@ -90,6 +91,19 @@
   background-color: var(--teal);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.header-mobile-lang {
+  display: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
 .header-btn {
   padding: 0.6rem 1.4rem;
   font-size: 0.9rem;
@@ -150,8 +164,13 @@
 }
 
 @media (max-width: 900px) {
+  .main-header {
+    padding: 0.85rem 0;
+  }
+
   .header-logo-img {
-    height: 56px;
+    height: 72px;
+    max-width: min(220px, 50vw);
   }
 
   .menu-toggle {
@@ -161,6 +180,14 @@
 
   .desktop-only-btn {
     display: none;
+  }
+
+  .header-actions .lang-switcher {
+    display: none;
+  }
+
+  .header-mobile-lang {
+    display: block;
   }
 
   .nav-overlay {
@@ -219,7 +246,8 @@
 
 @media (max-width: 480px) {
   .header-logo-img {
-    height: 48px;
+    height: 60px;
+    max-width: min(180px, 55vw);
   }
 }
 
