@@ -15,9 +15,9 @@ export function isOpenAllBookingSlotsEnabled() {
   return true;
 }
 
-function eachDateKeyInRange(fromDateKey, toDateKey, fn) {
+function eachDateKeyInRange(fromDateKey, endDateKey, fn) {
   const start = parseDateKey(fromDateKey);
-  const end = parseDateKey(toDateKey);
+  const end = parseDateKey(endDateKey);
   const cur = new Date(start.year, start.monthIndex, start.day);
   const last = new Date(end.year, end.monthIndex, end.day);
   cur.setHours(0, 0, 0, 0);
@@ -28,10 +28,10 @@ function eachDateKeyInRange(fromDateKey, toDateKey, fn) {
   }
 }
 
-async function fetchBookedSlotsInRange(fromDateKey, toDateKey) {
+async function fetchBookedSlotsInRange(fromDateKey, endDateKey) {
   const client = requireSupabase();
   const start = parseDateKey(fromDateKey);
-  const end = parseDateKey(toDateKey);
+  const end = parseDateKey(endDateKey);
   const startIso = new Date(start.year, start.monthIndex, start.day).toISOString();
   const endIso = new Date(end.year, end.monthIndex, end.day, 23, 59, 59).toISOString();
 
@@ -57,11 +57,11 @@ async function fetchBookedSlotsInRange(fromDateKey, toDateKey) {
   return map;
 }
 
-export async function generateOpenSlotsForRange(fromDateKey, toDateKey) {
-  const booked = await fetchBookedSlotsInRange(fromDateKey, toDateKey).catch(() => ({}));
+export async function generateOpenSlotsForRange(fromDateKey, endDateKey) {
+  const booked = await fetchBookedSlotsInRange(fromDateKey, endDateKey).catch(() => ({}));
   const map = {};
 
-  eachDateKeyInRange(fromDateKey, toDateKey, (dateKey) => {
+  eachDateKeyInRange(fromDateKey, endDateKey, (dateKey) => {
     const { year, monthIndex, day } = parseDateKey(dateKey);
     if (isPastDay(year, monthIndex, day)) return;
 
@@ -122,13 +122,13 @@ export function isAvailabilitySetupError(error) {
   );
 }
 
-async function fetchSlotsFromTable(client, fromDateKey, toDateKey) {
+async function fetchSlotsFromTable(client, fromDateKey, endDateKey) {
   const nowIso = new Date().toISOString();
   const { data, error } = await client
     .from('booking_availability')
     .select('slot_date, slot_time')
     .gte('slot_date', fromDateKey)
-    .lte('slot_date', toDateKey)
+    .lte('slot_date', endDateKey)
     .gt('starts_at', nowIso)
     .order('slot_date')
     .order('slot_time');
@@ -141,27 +141,27 @@ async function fetchSlotsFromTable(client, fromDateKey, toDateKey) {
   return groupSlotsByDate(filtered);
 }
 
-export async function fetchPublicAvailableSlots(fromDateKey, toDateKey) {
+export async function fetchPublicAvailableSlots(fromDateKey, endDateKey) {
   if (isOpenAllBookingSlotsEnabled()) {
-    return generateOpenSlotsForRange(fromDateKey, toDateKey);
+    return generateOpenSlotsForRange(fromDateKey, endDateKey);
   }
 
   const client = requireSupabase();
 
   const { data, error } = await client.rpc('get_available_booking_slots', {
     p_from: fromDateKey,
-    p_to: toDateKey,
+    p_to: endDateKey,
   });
 
   if (!error) {
     const map = groupSlotsByDate(data);
     if (Object.keys(map).length > 0) return map;
-    return generateOpenSlotsForRange(fromDateKey, toDateKey);
+    return generateOpenSlotsForRange(fromDateKey, endDateKey);
   }
 
   if (isMissingSchemaError(error)) {
     try {
-      return await fetchSlotsFromTable(client, fromDateKey, toDateKey);
+      return await fetchSlotsFromTable(client, fromDateKey, endDateKey);
     } catch (tableError) {
       if (isMissingSchemaError(tableError)) {
         throw new Error(SETUP_HINT);
