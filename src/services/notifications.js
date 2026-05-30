@@ -1,8 +1,4 @@
-import { requireSupabase } from '../lib/supabase';
-
-export async function sendNotification(body) {
-  const client = requireSupabase();
-  const { data, error } = await client.functions.invoke('send-notification', { body });
-  if (error) throw new Error(error.message);
-  return data;
+/** Envoi d’emails désactivé pour le moment. */
+export async function sendNotification() {
+  return { ok: true, skipped: true };
 }

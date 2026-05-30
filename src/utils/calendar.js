@@ -70,7 +70,7 @@ export function getBookedStartDate() {
  */
 export function downloadCalendarEvent({
   title = 'Appel — Grâce est là',
-  description = 'Échange visioconférence avec l\'équipe Grâce est là. Le lien vous sera envoyé par email.',
+  description = 'Échange visioconférence avec l\'équipe Grâce est là.',
   location = 'Visioconférence',
   start,
   durationMinutes = 30,
@@ -109,6 +109,30 @@ export function downloadCalendarEvent({
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
   return true;
+}
+
+/** Lien Google Calendar (ouvre dans un nouvel onglet) */
+export function getGoogleCalendarUrl({
+  title = 'Appel — Grâce est là',
+  description = 'Échange visioconférence avec l\'équipe Grâce est là.',
+  location = 'Visioconférence',
+  start,
+  durationMinutes = 30,
+}) {
+  if (!start || Number.isNaN(start.getTime())) return null;
+
+  const end = new Date(start.getTime() + durationMinutes * 60 * 1000);
+  const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: title,
+    dates: `${fmt(start)}/${fmt(end)}`,
+    details: description,
+    location,
+  });
+
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }

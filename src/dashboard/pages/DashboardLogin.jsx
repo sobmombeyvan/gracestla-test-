@@ -10,7 +10,7 @@ const DashboardLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { session, profile, effectiveRole, needsOnboarding, loading: authLoading, refreshProfile } = useAuth();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(location.state?.signupEmail || '');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -59,7 +59,10 @@ const DashboardLogin = () => {
           <h1>Connexion</h1>
           <p className="login-lead">Accédez à votre tableau de bord personnel.</p>
 
-          {location.state?.authRequired && (
+          {location.state?.signupEmail && (
+            <p className="login-hint login-hint--ok">Compte créé. Connectez-vous pour accéder à votre espace.</p>
+          )}
+          {location.state?.authRequired && !location.state?.signupEmail && (
             <p className="login-hint login-hint--warn">Identifiez-vous pour continuer.</p>
           )}
 

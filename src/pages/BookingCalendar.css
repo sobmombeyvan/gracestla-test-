@@ -4,6 +4,123 @@
   min-height: 100vh;
 }
 
+.calendar-page-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+}
+
+.calendar-page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  color: #1A1A1A;
+}
+
+.calendar-page-header p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.calendar-page-meta {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--teal);
+}
+
+.calendar-hint {
+  font-size: 0.85rem;
+  color: #888;
+  margin: -1rem 0 1.25rem;
+}
+
+.calendar-no-slots {
+  color: #9e4a3d;
+  font-size: 0.9rem;
+  padding: 1rem;
+  background: #fdf3f1;
+  border-radius: 8px;
+}
+
+.calendar-selected-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #eef8f7;
+  border: 1px solid rgba(60, 162, 162, 0.25);
+  border-radius: 10px;
+}
+
+.calendar-selected-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.calendar-selected-banner strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--teal);
+  margin-bottom: 0.2rem;
+}
+
+.calendar-selected-banner p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.day-num.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.day-num.disabled:hover {
+  background: none;
+  color: #999;
+}
+
+.day-num.has-slots:not(.disabled):not(.selected) {
+  background: rgba(60, 162, 162, 0.12);
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.calendar-loading {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.calendar-no-slots-inline {
+  margin-bottom: 1rem;
+}
+
+.calendar-layout-compact .calendar-left,
+.calendar-layout-compact .calendar-right {
+  padding: 24px;
+}
+
+.calendar-layout-compact .calendar-left h2,
+.calendar-layout-compact .calendar-right h2 {
+  font-size: 1.25rem;
+}
+
+.calendar-confirm-wrapper {
+  max-width: 1000px;
+  margin: 1.5rem auto 0;
+}
+
 .calendar-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;

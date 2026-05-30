@@ -11,27 +11,33 @@ export async function createBooking({
 }) {
   const client = requireSupabase();
 
-  const { data, error } = await client
-    .from('bookings')
-    .insert({
-      submission_id: submissionId || null,
-      email: email || null,
-      name: name || null,
-      starts_at: startsAt,
-      display_date: displayDate,
-      display_time: displayTime,
-    })
-    .select()
-    .single();
+  const { data, error } = await client.rpc('create_public_booking', {
+    p_submission_id: submissionId || null,
+    p_email: email || null,
+    p_name: name || null,
+    p_starts_at: startsAt,
+    p_display_date: displayDate,
+    p_display_time: displayTime,
+  });
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    const msg = error.message || '';
+    if (msg.toLowerCase().includes('row-level security') || msg.includes('create_public_booking')) {
+      throw new Error(
+        'Réservation refusée (RLS). Exécutez la migration 013_fix_public_form_rls.sql sur Supabase.',
+      );
+    }
+    throw new Error(error.message);
+  }
+
+  const row = Array.isArray(data) ? data[0] : data;
 
   await sendNotification({
     event: 'booking_confirmed',
-    record: data,
+    record: row,
   }).catch(() => {});
 
-  return data;
+  return row;
 }
 
 export async function fetchBookings(limit = 50) {

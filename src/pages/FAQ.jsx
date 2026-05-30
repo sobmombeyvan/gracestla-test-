@@ -24,35 +24,6 @@ const faqItems = [
       "Le programme au pair est un échange culturel : le ou la jeune vit au sein de la famille, partage son quotidien et sa culture, améliore une langue et accompagne les enfants dans un cadre défini. Grâce est là ne se limite pas à une mise en relation : nous sécurisons, accompagnons et guidons chaque étape.",
   },
   {
-    question: "Quels sont vos tarifs ?",
-    answer: (
-      <>
-        <p><strong>Pour les familles :</strong></p>
-        <ul>
-          <li>Démarrage Sécurisé — 590 €</li>
-          <li>Choix Maîtrisé — 1 090 € (formule la plus choisie)</li>
-          <li>Expérience Sans Stress — 1 890 €</li>
-        </ul>
-        <p><strong>Pour les jeunes au pair :</strong></p>
-        <ul>
-          <li>Essentiel — 99 €</li>
-          <li>Sérénité — 290 € (formule la plus choisie)</li>
-          <li>Premium — 490 €</li>
-        </ul>
-        <p>
-          Consultez les pages détaillées :{' '}
-          <Link to="/tarifs-famille">tarifs familles</Link> et{' '}
-          <Link to="/tarifs-au-pair">tarifs au pair</Link>.
-        </p>
-      </>
-    ),
-  },
-  {
-    question: "Puis-je payer en plusieurs fois ?",
-    answer:
-      "Oui. Le paiement en plusieurs fois est possible selon la formule choisie. Pour les familles, le paiement flexible est proposé sans frais cachés. Pour les jeunes au pair, des facilités sont indiquées à partir de 49 €/mois (Essentiel et Sérénité) ou 79 €/mois (Premium), selon l'offre.",
-  },
-  {
     question: "Comment démarrer avec Grâce est là ?",
     answer: (
       <>
@@ -77,7 +48,7 @@ const faqItems = [
     question: "Comment vous contacter ?",
     answer: (
       <>
-        Écrivez-nous à <a href="mailto:contact@graceestla.com">contact@graceestla.com</a> ou utilisez le <Link to="/contact">formulaire de contact</Link>. Nous répondons à toutes vos questions sur le programme, les tarifs et l'accompagnement.
+        Écrivez-nous à <a href="mailto:contact@graceestla.com">contact@graceestla.com</a> ou utilisez le <Link to="/contact">formulaire de contact</Link>. Nous répondons à toutes vos questions sur le programme et l'accompagnement.
       </>
     ),
   },

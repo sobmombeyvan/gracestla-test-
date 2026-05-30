@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './dashboard/components/ProtectedRoute';
 import SessionGate from './dashboard/components/SessionGate';
@@ -10,8 +10,6 @@ import Reservation from './pages/Reservation';
 import AuPairForm from './pages/AuPairForm';
 import FamilyForm from './pages/FamilyForm';
 import Success from './pages/Success';
-import PricingFamily from './pages/PricingFamily';
-import PricingAuPair from './pages/PricingAuPair';
 import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -26,6 +24,7 @@ import FamilyDetail from './pages/archive/FamilyDetail';
 import AuPairArchives from './pages/archive/AuPairArchives';
 import AuPairDetail from './pages/archive/AuPairDetail';
 import CookieBanner from './components/CookieBanner';
+import NotFound from './pages/NotFound';
 import './dashboard/styles/dashboard.css';
 
 // Dashboard lazy imports
@@ -97,8 +96,6 @@ function AppContent() {
           <Route path="/famille" element={<FamilyForm />} />
           <Route path="/calendrier" element={<BookingCalendar />} />
           <Route path="/success" element={<Success />} />
-          <Route path="/tarifs-famille" element={<PricingFamily />} />
-          <Route path="/tarifs-au-pair" element={<PricingAuPair />} />
           <Route path="/services" element={<Services />} />
           <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -111,6 +108,9 @@ function AppContent() {
           <Route path="/jeunes-au-pair/familles/:id" element={<FamilyDetail />} />
           <Route path="/familles-d-accueil/au-pairs" element={<AuPairArchives />} />
           <Route path="/familles-d-accueil/au-pairs/:id" element={<AuPairDetail />} />
+          <Route path="/tarifs-famille" element={<Navigate to="/contact" replace />} />
+          <Route path="/tarifs-au-pair" element={<Navigate to="/contact" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

@@ -12,12 +12,22 @@ const TYPE_LABELS = {
 function mapSubmissionError(error) {
   const msg = error?.message || '';
   const low = msg.toLowerCase();
+  if (low.includes('row-level security') || low.includes('row level security')) {
+    return new Error(
+      'Accès refusé (RLS). Exécutez la migration 013_fix_public_form_rls.sql sur Supabase puis réessayez.',
+    );
+  }
   if (
     low.includes('form_submissions') &&
     (low.includes('does not exist') || low.includes('relation') || low.includes('could not find'))
   ) {
     return new Error(
       "Table form_submissions absente sur Supabase. Executez les migrations SQL de base (001+) puis rechargez.",
+    );
+  }
+  if (low.includes('create_form_submission')) {
+    return new Error(
+      'Fonction create_form_submission absente. Exécutez la migration 013_fix_public_form_rls.sql sur Supabase.',
     );
   }
   return new Error(msg || 'Erreur lors du chargement des demandes.');
@@ -32,26 +42,27 @@ export async function createSubmission(type, payload) {
   const email = emailFromPayload(payload);
   const name = displayNameFromPayload(type, payload);
 
-  const { data, error } = await client
-    .from('form_submissions')
-    .insert({
-      type,
-      email: email || null,
-      name: name || null,
-      payload,
-    })
-    .select()
-    .single();
+  const { data, error } = await client.rpc('create_form_submission', {
+    p_type: type,
+    p_email: email || null,
+    p_name: name || null,
+    p_payload: payload,
+  });
 
-  if (error) throw new Error(error.message);
+  if (error) throw mapSubmissionError(error);
+
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row?.id) {
+    throw new Error('La demande n\'a pas pu être enregistrée. Réessayez.');
+  }
 
   await sendNotification({
     event: 'submission_created',
     type,
-    record: data,
+    record: row,
   }).catch(() => {});
 
-  return data;
+  return row;
 }
 
 export async function fetchSubmissions({ type, status, limit = 100 } = {}) {

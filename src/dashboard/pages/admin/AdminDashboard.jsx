@@ -2,8 +2,10 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 import { buildDashboardUser } from '../../../utils/userDisplay';
-import { LayoutDashboard, Inbox, Users, User, Home, GitBranch, MessageSquare, FileText, AlertTriangle, BarChart3, Bell, Settings, ClipboardList } from 'lucide-react';
+import { LayoutDashboard, Inbox, Users, User, Home, GitBranch, MessageSquare, FileText, AlertTriangle, BarChart3, Bell, Settings, ClipboardList, Calendar, CalendarClock } from 'lucide-react';
 import AdminSubmissions from './AdminSubmissions';
+import AdminBookings from './AdminBookings';
+import AdminAvailability from './AdminAvailability';
 import AdminFamilyQuestionnaires from './AdminFamilyQuestionnaires';
 import AdminAuPairQuestionnaires from './AdminAuPairQuestionnaires';
 import DashboardLayout from '../../layouts/DashboardLayout';
@@ -20,6 +22,8 @@ const sidebarItems = [
     items: [
       { name: 'Vue d\'ensemble', path: '/dashboard/admin', icon: <LayoutDashboard size={18} /> },
       { name: 'Demandes', path: '/dashboard/admin/submissions', icon: <Inbox size={18} /> },
+      { name: 'Rendez-vous', path: '/dashboard/admin/bookings', icon: <Calendar size={18} /> },
+      { name: 'Créneaux', path: '/dashboard/admin/availability', icon: <CalendarClock size={18} /> },
       { name: 'Quest. familles', path: '/dashboard/admin/questionnaires-familles', icon: <ClipboardList size={18} /> },
       { name: 'Quest. au pairs', path: '/dashboard/admin/questionnaires-aupairs', icon: <ClipboardList size={18} /> },
       { name: 'Utilisateurs', path: '/dashboard/admin/users', icon: <Users size={18} /> },
@@ -57,6 +61,8 @@ const AdminDashboard = () => {
       <Routes>
         <Route index element={<AdminOverview />} />
         <Route path="submissions" element={<AdminSubmissions />} />
+        <Route path="bookings" element={<AdminBookings />} />
+        <Route path="availability" element={<AdminAvailability />} />
         <Route path="questionnaires-familles" element={<AdminFamilyQuestionnaires />} />
         <Route path="questionnaires-aupairs" element={<AdminAuPairQuestionnaires />} />
         <Route path="users" element={<AdminUsers />} />

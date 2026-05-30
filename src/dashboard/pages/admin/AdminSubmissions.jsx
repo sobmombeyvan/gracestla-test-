@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Inbox, Mail, Archive, Eye } from 'lucide-react';
+import { Inbox, Mail, Archive, Eye, Calendar } from 'lucide-react';
 import PageHeader from '../../components/PageHeader';
-import {
+import PayloadView from '../../components/PayloadView';import {
   fetchSubmissions,
   updateSubmissionStatus,
   getSubmissionTypeLabel,
@@ -122,18 +122,18 @@ const AdminSubmissions = () => {
                 <th>Type</th>
                 <th>Nom</th>
                 <th>Email</th>
+                <th>Créneau</th>
                 <th>Statut</th>
-                <th></th>
-              </tr>
+                <th></th>              </tr>
             </thead>
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={6}>Chargement…</td>
+                  <td colSpan={7}>Chargement…</td>
                 </tr>
               ) : rows.length === 0 ? (
                 <tr>
-                  <td colSpan={6}>Aucune demande pour le moment.</td>
+                  <td colSpan={7}>Aucune demande pour le moment.</td>
                 </tr>
               ) : (
                 rows.map((row) => (
@@ -153,6 +153,16 @@ const AdminSubmissions = () => {
                       )}
                     </td>
                     <td>
+                      {row.payload?.preferredDate ? (
+                        <span className="admin-slot-chip">
+                          <Calendar size={12} />
+                          {row.payload.preferredDate}
+                          {row.payload.preferredTime ? ` · ${row.payload.preferredTime}` : ''}
+                        </span>
+                      ) : (
+                        '—'
+                      )}
+                    </td>                    <td>
                       <span className={`admin-status admin-status-${row.status}`}>
                         {STATUS_OPTIONS.find((s) => s.value === row.status)?.label ?? row.status}
                       </span>
@@ -201,10 +211,7 @@ const AdminSubmissions = () => {
               ))}
             </select>
             <label className="admin-detail-label">Contenu du formulaire</label>
-            <pre className="admin-payload-preview">
-              {JSON.stringify(selected.payload, null, 2)}
-            </pre>
-            {selected.status !== 'archived' && (
+            <PayloadView payload={selected.payload} />            {selected.status !== 'archived' && (
               <button
                 type="button"
                 className="dash-btn-secondary"

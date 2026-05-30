@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { User, Users } from 'lucide-react';
 import { isSupabaseConfigured } from '../../lib/supabase';
-import { signUpWithPassword, resendSignupConfirmation } from '../../services/auth';
+import { signUpWithPassword, signInWithPassword } from '../../services/auth';
 import { savePendingRole } from '../../services/profiles';
 import { useAuth } from '../../context/AuthContext';
 import '../styles/dashboard.css';
@@ -54,10 +54,8 @@ const DashboardSignup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [resending, setResending] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
-  const [pendingConfirmationEmail, setPendingConfirmationEmail] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,40 +85,33 @@ const DashboardSignup = () => {
         phone: phone.trim(),
         country: country.trim(),
       });
-      if (!data.session) {
-        setPendingConfirmationEmail(normalizedEmail);
-        setMessage('Confirmez votre email, puis connectez-vous. Votre espace sera au pair ou famille selon votre choix à l’inscription.');
+
+      if (data.session) {
+        await refreshProfile();
+        const role = data.user?.user_metadata?.role || accountType;
+        navigate(role === 'family' ? '/dashboard/family' : '/dashboard/aupair', { replace: true });
         return;
       }
-      await refreshProfile();
-      const role = data.user?.user_metadata?.role || accountType;
-      navigate(role === 'family' ? '/dashboard/family' : '/dashboard/aupair', { replace: true });
+
+      // Pas de session après inscription : connexion directe (sans email de confirmation)
+      try {
+        const login = await signInWithPassword(normalizedEmail, password);
+        if (login.session) {
+          await refreshProfile();
+          const role = login.user?.user_metadata?.role || accountType;
+          navigate(role === 'family' ? '/dashboard/family' : '/dashboard/aupair', { replace: true });
+          return;
+        }
+      } catch {
+        /* connexion immédiate impossible */
+      }
+
+      setMessage('Compte créé. Connectez-vous avec votre email et mot de passe.');
+      navigate('/dashboard', { replace: true, state: { signupEmail: normalizedEmail } });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Création de compte impossible');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleResendConfirmation = async () => {
-    setError(null);
-    setMessage(null);
-    if (!isSupabaseConfigured) {
-      setError('Service indisponible. Configuration Supabase requise.');
-      return;
-    }
-    if (!pendingConfirmationEmail) {
-      setError('Inscrivez-vous d’abord pour recevoir un email de confirmation.');
-      return;
-    }
-    setResending(true);
-    try {
-      await resendSignupConfirmation(pendingConfirmationEmail);
-      setMessage(`Un nouvel email de confirmation a été envoyé à ${pendingConfirmationEmail}.`);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Impossible de renvoyer l’email de confirmation.');
-    } finally {
-      setResending(false);
     }
   };
 
@@ -248,16 +239,6 @@ const DashboardSignup = () => {
               <p className="login-hint login-hint--warn">Les mots de passe ne correspondent pas.</p>
             )}
             {message && <p className="login-hint login-hint--ok">{message}</p>}
-            {pendingConfirmationEmail && (
-              <button
-                type="button"
-                className="login-btn login-btn-google"
-                onClick={handleResendConfirmation}
-                disabled={loading || resending}
-              >
-                {resending ? 'Renvoi…' : 'Renvoyer l’email de confirmation'}
-              </button>
-            )}
             {error && <p className="login-hint login-hint--warn">{error}</p>}
             <button type="submit" className="login-btn" disabled={loading || !isPasswordStrong}>
               {loading ? 'Création…' : 'Créer mon compte'}
