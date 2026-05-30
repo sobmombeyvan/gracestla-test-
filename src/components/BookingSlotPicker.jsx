@@ -108,7 +108,9 @@ export default function BookingSlotPicker({
       <div className="calendar-left">
         <h2>Sélectionnez une date</h2>
         <p className="calendar-hint">
-          Seules les dates ouvertes par notre équipe sont réservables.
+          {isOpenAllBookingSlotsEnabled()
+            ? 'Choisissez une date en surbrillance, puis un horaire disponible.'
+            : 'Seules les dates ouvertes par notre équipe sont réservables.'}
         </p>
         {loading && <p className="calendar-loading">Chargement des créneaux…</p>}
         {!loading && loadError && !hasAnySlotsThisMonth && (

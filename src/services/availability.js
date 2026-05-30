@@ -6,6 +6,7 @@ import {
   parseDateKey,
   isPastDay,
   isPastTimeSlot,
+  normalizeSlotTime,
 } from '../lib/bookingSlot';
 
 /** Tous les jours ouverts (désactiver avec VITE_OPEN_ALL_BOOKING_SLOTS=false). */
@@ -28,7 +29,19 @@ function eachDateKeyInRange(fromDateKey, endDateKey, fn) {
   }
 }
 
-async function fetchBookedSlotsInRange(fromDateKey, endDateKey) {
+function bookedRowsToMap(rows) {
+  const map = {};
+  for (const row of rows ?? []) {
+    const dateKey = normalizeDateKey(row.slot_date);
+    const time = normalizeSlotTime(row.slot_time);
+    if (!dateKey || !time) continue;
+    if (!map[dateKey]) map[dateKey] = [];
+    if (!map[dateKey].includes(time)) map[dateKey].push(time);
+  }
+  return map;
+}
+
+async function fetchBookedSlotsFromTable(fromDateKey, endDateKey) {
   const client = requireSupabase();
   const start = parseDateKey(fromDateKey);
   const end = parseDateKey(endDateKey);
@@ -49,12 +62,59 @@ async function fetchBookedSlotsInRange(fromDateKey, endDateKey) {
     const d = new Date(row.starts_at);
     const dateKey = toDateKey(d.getFullYear(), d.getMonth(), d.getDate());
     const time =
-      row.display_time?.replace('h', ':') ||
+      normalizeSlotTime(row.display_time) ||
       `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
     if (!map[dateKey]) map[dateKey] = [];
     if (!map[dateKey].includes(time)) map[dateKey].push(time);
   }
   return map;
+}
+
+async function fetchBookedSlotsInRange(fromDateKey, endDateKey) {
+  const client = requireSupabase();
+
+  const { data, error } = await client.rpc('get_confirmed_booked_slots', {
+    p_from: fromDateKey,
+    p_to: endDateKey,
+  });
+
+  if (!error) return bookedRowsToMap(data);
+
+  const msg = (error.message ?? '').toLowerCase();
+  if (
+    msg.includes('get_confirmed_booked_slots') ||
+    msg.includes('does not exist') ||
+    msg.includes('pgrst202')
+  ) {
+    try {
+      return await fetchBookedSlotsFromTable(fromDateKey, endDateKey);
+    } catch {
+      return {};
+    }
+  }
+
+  throw error;
+}
+
+function filterFutureSlotsMap(map) {
+  const out = {};
+  for (const [dateKey, times] of Object.entries(map)) {
+    const { year, monthIndex, day } = parseDateKey(dateKey);
+    if (isPastDay(year, monthIndex, day)) continue;
+    const futureTimes = times.filter((t) => !isPastTimeSlot(dateKey, t));
+    if (futureTimes.length > 0) out[dateKey] = futureTimes;
+  }
+  return out;
+}
+
+function intersectSlotMaps(restrictTo, allowed) {
+  const out = {};
+  for (const dateKey of Object.keys(restrictTo)) {
+    const allowedSet = new Set(allowed[dateKey] ?? []);
+    const times = restrictTo[dateKey].filter((t) => allowedSet.has(t));
+    if (times.length > 0) out[dateKey] = times;
+  }
+  return out;
 }
 
 export async function generateOpenSlotsForRange(fromDateKey, endDateKey) {
@@ -142,8 +202,10 @@ async function fetchSlotsFromTable(client, fromDateKey, endDateKey) {
 }
 
 export async function fetchPublicAvailableSlots(fromDateKey, endDateKey) {
+  const generated = await generateOpenSlotsForRange(fromDateKey, endDateKey);
+
   if (isOpenAllBookingSlotsEnabled()) {
-    return generateOpenSlotsForRange(fromDateKey, endDateKey);
+    return generated;
   }
 
   const client = requireSupabase();
@@ -154,17 +216,25 @@ export async function fetchPublicAvailableSlots(fromDateKey, endDateKey) {
   });
 
   if (!error) {
-    const map = groupSlotsByDate(data);
-    if (Object.keys(map).length > 0) return map;
-    return generateOpenSlotsForRange(fromDateKey, endDateKey);
+    const adminOpen = filterFutureSlotsMap(groupSlotsByDate(data));
+    if (Object.keys(adminOpen).length > 0) {
+      return intersectSlotMaps(adminOpen, generated);
+    }
+    return generated;
   }
 
   if (isMissingSchemaError(error)) {
     try {
-      return await fetchSlotsFromTable(client, fromDateKey, endDateKey);
+      const fromTable = filterFutureSlotsMap(
+        await fetchSlotsFromTable(client, fromDateKey, endDateKey),
+      );
+      if (Object.keys(fromTable).length > 0) {
+        return intersectSlotMaps(fromTable, generated);
+      }
+      return generated;
     } catch (tableError) {
       if (isMissingSchemaError(tableError)) {
-        throw new Error(SETUP_HINT);
+        return generated;
       }
       throw new Error(tableError.message ?? SETUP_HINT);
     }
@@ -214,7 +284,9 @@ export async function fetchBookedSlotsForMonth(year, monthIndex) {
   for (const row of data ?? []) {
     const d = new Date(row.starts_at);
     const dateKey = toDateKey(d.getFullYear(), d.getMonth(), d.getDate());
-    const time = row.display_time?.replace('h', ':') || `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+    const time =
+      normalizeSlotTime(row.display_time) ||
+      `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
     if (!map[dateKey]) map[dateKey] = [];
     if (!map[dateKey].includes(time)) map[dateKey].push(time);
   }

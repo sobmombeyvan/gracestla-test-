@@ -27,6 +27,15 @@ export function parseDateKey(dateKey) {
   return { year, monthIndex: month - 1, day };
 }
 
+/** Normalise "9h30" / "09:30" → "09:30" pour comparer aux créneaux standards */
+export function normalizeSlotTime(time) {
+  if (!time) return '';
+  const raw = String(time).trim().replace('h', ':');
+  const match = raw.match(/^(\d{1,2}):(\d{2})$/);
+  if (!match) return raw;
+  return `${match[1].padStart(2, '0')}:${match[2]}`;
+}
+
 export function buildBookingSlotFromKey(dateKey, selectedTime) {
   const { year, monthIndex, day } = parseDateKey(dateKey);
   const [hours, minutes] = selectedTime.split(':').map(Number);
