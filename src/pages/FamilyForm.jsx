@@ -59,12 +59,6 @@ const FamilyForm = () => {
       <section className="fam-main">
         <div className="container">
           <div className="fam-form-container">
-            <div className="fam-form-steps">
-              <span className="fam-step is-active">1. Vos informations</span>
-              <span className={`fam-step ${slotComplete ? 'is-active' : ''}`}>2. Votre créneau</span>
-              <span className={`fam-step ${slotComplete ? 'is-ready' : ''}`}>3. Confirmation</span>
-            </div>
-
             <FormFeedback error={error} loading={loading} />
             <form
               className="fam-form"

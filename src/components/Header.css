@@ -1,6 +1,8 @@
 .main-header {
   background: var(--white);
   padding: 1rem 0;
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
@@ -19,6 +21,7 @@
   text-decoration: none;
   flex-shrink: 0;
   z-index: 1100;
+  min-width: 0;
 }
 
 .header-logo-img {
@@ -29,9 +32,19 @@
   display: block;
 }
 
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  margin-left: auto;
+  z-index: 1100;
+}
+
 .nav-overlay {
   display: none;
 }
+
 .logo-icon-svg {
   width: 55px;
   height: 45px;
@@ -39,10 +52,12 @@
   align-items: center;
   justify-content: center;
 }
+
 .logo-text {
   display: flex;
   flex-direction: column;
 }
+
 .header-logo {
   font-family: var(--font-logo, 'Caveat', cursive);
   font-size: 2.5rem;
@@ -53,9 +68,11 @@
   align-items: baseline;
   gap: 0.3rem;
 }
+
 .logo-grace {
   color: var(--teal);
 }
+
 .logo-estla {
   color: var(--brown);
   font-size: 2.2rem;
@@ -66,6 +83,7 @@
   align-items: center;
   gap: 2.5rem;
 }
+
 .nav-link {
   text-decoration: none;
   color: #333;
@@ -75,12 +93,15 @@
   position: relative;
   transition: color 0.3s ease;
 }
+
 .nav-link:hover {
   color: var(--teal);
 }
+
 .nav-link.active {
   color: var(--teal);
 }
+
 .nav-link.active::after {
   content: '';
   position: absolute;
@@ -113,6 +134,7 @@
   text-decoration: none;
   font-weight: 600;
 }
+
 .header-btn:hover {
   background-color: var(--teal-hover);
 }
@@ -121,17 +143,20 @@
   display: none;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 0.35rem;
   z-index: 1100;
+  flex-shrink: 0;
 }
 
 .menu-toggle span {
-  width: 2rem;
+  width: 100%;
   height: 0.25rem;
   background: var(--teal);
   border-radius: 10px;
@@ -157,7 +182,25 @@
   display: none;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 901px) {
+  .header-nav {
+    order: 2;
+    flex: 1;
+    justify-content: center;
+    margin: 0 1rem;
+  }
+
+  .logo-link {
+    order: 1;
+  }
+
+  .header-toolbar {
+    order: 3;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 901px) {
   .header-nav {
     gap: 1.5rem;
   }
@@ -165,24 +208,27 @@
 
 @media (max-width: 900px) {
   .main-header {
-    padding: 0.85rem 0;
+    padding: 0.75rem 0;
+  }
+
+  .header-container {
+    gap: 0.5rem;
   }
 
   .header-logo-img {
-    height: 72px;
-    max-width: min(220px, 50vw);
+    height: 88px;
+    max-width: min(260px, 62vw);
   }
 
   .menu-toggle {
     display: flex;
-    z-index: 1100;
   }
 
   .desktop-only-btn {
     display: none;
   }
 
-  .header-actions .lang-switcher {
+  .header-actions {
     display: none;
   }
 
@@ -201,23 +247,26 @@
     backdrop-filter: blur(2px);
   }
 
+  /* Drawer: hors du flux header, liens en haut (pas centrés verticalement) */
   .header-nav {
     position: fixed;
     top: 0;
     right: 0;
+    left: auto;
     height: 100dvh;
-    width: min(300px, 88vw);
+    width: min(320px, 92vw);
     background: var(--white);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: stretch;
     gap: 0;
-    padding: 5rem 1.5rem 2rem;
+    padding: calc(5.5rem + env(safe-area-inset-top, 0)) 1.25rem calc(2rem + env(safe-area-inset-bottom, 0));
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
     z-index: 1050;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .header-nav.mobile-open {
@@ -226,7 +275,7 @@
 
   .nav-link {
     font-size: 1.05rem;
-    padding: 0.85rem 0;
+    padding: 0.9rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     width: 100%;
     text-align: left;
@@ -238,16 +287,27 @@
 
   .mobile-only-btn {
     display: block;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     width: 100%;
-    padding: 0.85rem 1rem;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 480px) {
+  .main-header .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .header-logo-img {
-    height: 60px;
-    max-width: min(180px, 55vw);
+    height: 80px;
+    max-width: min(240px, 68vw);
+  }
+
+  .menu-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
-

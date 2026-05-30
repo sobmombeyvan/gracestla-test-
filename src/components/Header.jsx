@@ -40,17 +40,25 @@ const Header = () => {
           />
         </Link>
 
-        <button
-          type="button"
-          className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          aria-expanded={isMenuOpen}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div className="header-toolbar">
+          <div className="header-actions">
+            <LanguageSwitcher compact />
+            <Link to="/reservation" className="btn btn-primary header-btn desktop-only-btn">
+              Je suis intéressé(e)
+            </Link>
+          </div>
+          <button
+            type="button"
+            className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={isMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
 
         {isMenuOpen && (
           <button
@@ -79,13 +87,6 @@ const Header = () => {
             Je suis intéressé(e)
           </Link>
         </nav>
-
-        <div className="header-actions">
-          <LanguageSwitcher compact />
-          <Link to="/reservation" className="btn btn-primary header-btn desktop-only-btn">
-            Je suis intéressé(e)
-          </Link>
-        </div>
       </div>
     </header>
   );

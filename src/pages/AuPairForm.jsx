@@ -44,12 +44,6 @@ const AuPairForm = () => {
 
           <div className="ap-form-container">
             <div className="ap-form-left">
-              <div className="ap-form-steps">
-                <span className="ap-step is-active">1. Ton profil</span>
-                <span className={`ap-step ${slotComplete ? 'is-active' : ''}`}>2. Ton créneau</span>
-                <span className={`ap-step ${slotComplete ? 'is-ready' : ''}`}>3. Confirmation</span>
-              </div>
-
               <FormFeedback error={error} loading={loading} />
               <form
                 className="ap-form"
