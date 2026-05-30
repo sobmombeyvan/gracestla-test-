@@ -217,6 +217,9 @@
   margin-top: 2rem;
   padding-top: 1.75rem;
   border-top: 1px solid #E8E4DF;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
 }
 
 .ap-booking-head {
@@ -247,9 +250,10 @@
 }
 
 .ap-booking-section .calendar-layout {
-  margin: 0;
-  max-width: none;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
+  max-width: 100%;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .ap-submit-btn:disabled {
@@ -260,6 +264,7 @@
 @media (max-width: 900px) {
   .ap-form-container {
     flex-direction: column;
+    overflow: visible;
   }
   .ap-form-right {
     width: 100%;
@@ -271,6 +276,11 @@
     font-size: 2.25rem;
   }
   .ap-form-left {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
+    min-width: 0;
+  }
+  .ap-main {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
