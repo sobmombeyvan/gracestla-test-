@@ -9,7 +9,7 @@ import {
   buildBookingSlotFromKey,
   BOOKING_TIME_SLOTS,
 } from '../lib/bookingSlot';
-import { fetchPublicAvailableSlots } from '../services/availability';
+import { fetchPublicAvailableSlots, isOpenAllBookingSlotsEnabled } from '../services/availability';
 import { isSupabaseConfigured } from '../lib/supabase';
 import '../pages/BookingCalendar.css';
 
@@ -60,7 +60,7 @@ export default function BookingSlotPicker({
     try {
       const map = await fetchPublicAvailableSlots(from, to);
       setAvailabilityMap(map);
-      if (Object.keys(map).length === 0) {
+      if (Object.keys(map).length === 0 && !isOpenAllBookingSlotsEnabled()) {
         setLoadError('Aucun créneau ouvert ce mois-ci. L\'équipe ouvrira de nouvelles dates prochainement.');
       }
     } catch (err) {
