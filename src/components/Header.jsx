@@ -21,8 +21,6 @@ const Header = () => {
   const navLinks = [
     { path: '/', label: 'Accueil' },
     { path: '/programme', label: 'Le Programme' },
-    { path: '/au-pair', label: 'Au pair' },
-    { path: '/famille', label: 'Famille' },
     { path: '/services', label: 'Services' },
     { path: '/a-propos', label: 'À propos' },
     { path: '/contact', label: 'Contact' },
