@@ -1,0 +1,117 @@
+.home-accompaniment {
+  background: var(--white);
+  overflow-x: clip;
+}
+
+.home-accompaniment-lead {
+  max-width: 42rem;
+  margin: -1.5rem auto 3rem;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  padding: 0 0.25rem;
+}
+
+.home-accompaniment-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.home-accompaniment-stage {
+  padding: 1.75rem 1.35rem 1.85rem;
+  border-top: 2px solid var(--teal);
+  background: var(--sand-light);
+  min-width: 0;
+}
+
+.home-accompaniment-num {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--teal-dark);
+}
+
+.home-accompaniment-stage h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.home-accompaniment-stage p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.home-accompaniment-aside {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  background: linear-gradient(160deg, var(--sand-light), var(--sand));
+}
+
+.home-accompaniment-aside p {
+  margin: 0 0 1.15rem;
+  color: var(--text-dark);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  font-family: var(--font-heading);
+}
+
+.home-accompaniment-link {
+  display: inline-block;
+  color: var(--teal-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--teal-dark);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.home-accompaniment-link:hover {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+@media (max-width: 900px) {
+  .home-accompaniment-stages {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 1.15rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-accompaniment-lead {
+    margin: -0.75rem auto 2rem;
+    font-size: 0.98rem;
+  }
+
+  .home-accompaniment-stage {
+    padding: 1.35rem 1.15rem 1.45rem;
+  }
+
+  .home-accompaniment-stage h3 {
+    font-size: 1.15rem;
+  }
+
+  .home-accompaniment-aside {
+    padding: 1.35rem 1.15rem;
+    border-radius: 10px;
+  }
+
+  .home-accompaniment-aside p {
+    font-size: 1rem;
+  }
+}

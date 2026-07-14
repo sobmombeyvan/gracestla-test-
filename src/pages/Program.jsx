@@ -14,7 +14,7 @@ const Program = () => {
         <section className="program-header">
           <h1 className="program-title">Le programme Jeune Au Pair</h1>
           <p className="program-subtitle">
-            Un échange culturel unique, basé sur la confiance, le respect et l'accompagnement.
+            Une aventure humaine unique — et une rencontre qui ne devrait jamais être laissée au hasard.
           </p>
         </section>
 
@@ -70,7 +70,10 @@ const Program = () => {
         <section className="program-role bg-sand-light">
           <div className="role-header">
             <h2>Quel est le rôle de Grâce est là ?</h2>
-            <p>Grâce est là est là pour sécuriser, accompagner et guider chaque étape de l'expérience Au Pair.</p>
+            <p>
+              Une expérience Au Pair réussie commence bien avant le départ. Nous accompagnons
+              jeunes et familles pour que la rencontre ne soit jamais laissée au hasard.
+            </p>
           </div>
 
           <div className="steps-container">

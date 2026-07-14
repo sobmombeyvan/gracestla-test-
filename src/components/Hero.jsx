@@ -7,11 +7,11 @@ const Hero = () => {
     <section className="hero">
       <div className="hero-content">
         <h1 className="hero-title">
-          Des relations au pair<br />
-          <span className="italic">qui fonctionnent vraiment</span>
+          Une expérience Au Pair<br />
+          <span className="italic">qui ne dépend plus de la chance</span>
         </h1>
         <p className="hero-subtitle">
-          Accompagnement & mise en relation au pair
+          Accompagnement humain avant le départ, pendant le séjour et bien après ton retour.
         </p>
         <div className="hero-cta">
           <Link to="/services" className="btn btn-primary hero-btn-main">

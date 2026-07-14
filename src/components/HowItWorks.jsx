@@ -21,7 +21,9 @@ const HowItWorks = () => {
               </svg>
             </div>
             <h3 className="step-title">Écoute et Analyse</h3>
-            <p className="step-description">Comprendre vos besoins</p>
+            <p className="step-description">
+              Nous prenons le temps de comprendre votre situation, vos attentes et vos valeurs pour poser des bases solides.
+            </p>
           </div>
           
           <div className="step-card">
@@ -35,7 +37,9 @@ const HowItWorks = () => {
               </svg>
             </div>
             <h3 className="step-title">Sélection Personnalisée</h3>
-            <p className="step-description">Trouver le bon profil</p>
+            <p className="step-description">
+              Nous orientons vers des profils compatibles et facilitons les échanges pour une mise en relation réfléchie.
+            </p>
           </div>
           
           <div className="step-card">
@@ -45,7 +49,9 @@ const HowItWorks = () => {
               </svg>
             </div>
             <h3 className="step-title">Suivi et Soutien</h3>
-            <p className="step-description">Être à vos côtés</p>
+            <p className="step-description">
+              Nous restons à vos côtés avant, pendant et après le début de l’expérience pour assurer un cadre serein.
+            </p>
           </div>
         </div>
       </div>

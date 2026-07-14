@@ -44,6 +44,7 @@
 .feature-description {
   color: var(--text-light);
   font-size: 0.9rem;
+  line-height: 1.65;
 }
 
 @media (max-width: 1024px) {
@@ -54,11 +55,21 @@
 }
 
 @media (max-width: 640px) {
+  .why-choose-us .section-header {
+    margin-bottom: 2.5rem;
+  }
+
   .cards-grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 100%;
+    gap: 1.25rem;
   }
+
   .feature-img {
-    height: 200px;
+    height: 190px;
+  }
+
+  .feature-content {
+    padding: 1.25rem 1.1rem;
   }
 }

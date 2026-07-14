@@ -16,7 +16,9 @@ const WhyChooseUs = () => {
             <img src="https://i.ibb.co/jZhXnxWW/host-family-in-7-steps-1422.jpg" alt="Sécurité & Confiance" className="feature-img" />
             <div className="feature-content text-center">
               <h3 className="feature-title">Sécurité & Confiance</h3>
-              <p className="feature-description">Un accompagnement rassurant</p>
+              <p className="feature-description">
+                Une relation de confiance se construit avant la première rencontre — avec un cadre clair et une compatibilité réelle.
+              </p>
             </div>
           </div>
           
@@ -24,7 +26,9 @@ const WhyChooseUs = () => {
             <img src="https://i.ibb.co/4ncNS6ky/5e2aeba4-eb30-466a-8040-2b4fc6b346b9.jpg" alt="Expérience Authentique" className="feature-img" />
             <div className="feature-content text-center">
               <h3 className="feature-title">Expérience Authentique</h3>
-              <p className="feature-description">Des échanges enrichissants</p>
+              <p className="feature-description">
+                Le programme Au Pair reste une aventure extraordinaire. Nous aidons à ce qu’elle soit aussi sereine qu’enrichissante.
+              </p>
             </div>
           </div>
           
@@ -32,7 +36,9 @@ const WhyChooseUs = () => {
             <img src="https://i.ibb.co/bj5HDgd0/653422ad-f084-4450-b82b-b24fea775e1e.jpg" alt="Soutien Professionnel" className="feature-img" />
             <div className="feature-content text-center">
               <h3 className="feature-title">Soutien Professionnel</h3>
-              <p className="feature-description">Un suivi dédié à chaque étape</p>
+              <p className="feature-description">
+                Quelqu’un pour écouter, conseiller et rassurer — avant ton départ, pendant ton séjour et bien après ton retour.
+              </p>
             </div>
           </div>
         </div>

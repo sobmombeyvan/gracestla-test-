@@ -1,0 +1,142 @@
+.for-whom {
+  background-color: var(--white);
+  overflow-x: clip;
+}
+
+.for-whom-lead {
+  max-width: 36rem;
+  margin: -1.5rem auto 3rem;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  padding: 0 0.25rem;
+}
+
+.for-whom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.for-whom-path {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--sand-light);
+  border: 1px solid rgba(90, 58, 43, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+@media (hover: hover) {
+  .for-whom-path:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(90, 58, 43, 0.08);
+  }
+
+  .for-whom-path:hover .for-whom-media img {
+    transform: scale(1.04);
+  }
+}
+
+.for-whom-media {
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.for-whom-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.for-whom-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.75rem 1.5rem 1.75rem;
+  min-width: 0;
+}
+
+.for-whom-body h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.85rem;
+}
+
+.for-whom-body > p {
+  color: var(--text-light);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.for-whom-body ul {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.for-whom-body li {
+  position: relative;
+  padding-left: 1.35rem;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.for-whom-body li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.for-whom-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.85rem 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .for-whom-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .for-whom-lead {
+    margin: -0.75rem auto 2rem;
+    font-size: 0.98rem;
+  }
+
+  .for-whom-body {
+    padding: 1.35rem 1.15rem 1.5rem;
+  }
+
+  .for-whom-body h3 {
+    font-size: 1.2rem;
+  }
+
+  .for-whom-btn {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+}

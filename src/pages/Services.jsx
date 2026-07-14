@@ -9,10 +9,10 @@ const Services = () => {
       <section className="s-hero">
         <div className="container s-hero-grid">
           <div className="s-hero-text">
-            <h1 className="s-title">Nos services,<br /><span className="s-teal-italic">pensés pour vous.</span></h1>
+            <h1 className="s-title">Plus qu’une mise<br /><span className="s-teal-italic">en relation.</span></h1>
             <p className="s-subtitle">
-              Un accompagnement humain et structuré pour vivre<br />
-              une expérience au pair réussie, en toute confiance.
+              Nous créons les meilleures conditions pour qu’une expérience Au Pair<br />
+              fonctionne vraiment — avant le départ, pendant le séjour, et après.
             </p>
             <Link to="/contact" className="s-btn s-btn-primary">Découvrir nos accompagnements</Link>
           </div>
@@ -169,7 +169,7 @@ const Services = () => {
               <div className="s-feat-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
               </div>
-              <h4 className="s-feat-title">Expérience & Compréhension</h4>
+              <h4 className="s-feat-title">Née d’une expérience réelle</h4>
               <p className="s-feat-desc">Nous connaissons les deux côtés<br/>et comprenons vos réalités.</p>
             </div>
             
@@ -177,24 +177,24 @@ const Services = () => {
               <div className="s-feat-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
               </div>
-              <h4 className="s-feat-title">Accompagnement Humain</h4>
-              <p className="s-feat-desc">Un suivi personnalisé, bienveillant<br/>et à l'écoute.</p>
+              <h4 className="s-feat-title">Préparation avant le départ</h4>
+              <p className="s-feat-desc">Une expérience réussie commence<br/>bien avant de monter dans l’avion.</p>
             </div>
             
             <div className="s-feat">
               <div className="s-feat-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" /></svg>
               </div>
-              <h4 className="s-feat-title">Sécurité & Confiance</h4>
-              <p className="s-feat-desc">Des mises en relation fiables<br/>et un cadre clair.</p>
+              <h4 className="s-feat-title">Matching humain</h4>
+              <p className="s-feat-desc">Des valeurs communes et une vraie<br/>compatibilité — pas le hasard.</p>
             </div>
             
             <div className="s-feat">
               <div className="s-feat-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#3CA2A2" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
               </div>
-              <h4 className="s-feat-title">Relation Durable</h4>
-              <p className="s-feat-desc">Notre objectif : une expérience<br/>réussie pour tous.</p>
+              <h4 className="s-feat-title">Présents à chaque étape</h4>
+              <p className="s-feat-desc">Avant, pendant et après le séjour&nbsp;:<br/>tu n’es jamais seul(e).</p>
             </div>
           </div>
         </div>
@@ -208,8 +208,8 @@ const Services = () => {
                 <img src="https://i.ibb.co/tT63n0kT/PHOTO-2026-05-19-14-36-07.jpg" alt="Accompagnement Grâce est là" />
              </div>
              <div className="s-cta-content">
-                <h2 className="s-cta-title">Prêt à vivre une belle expérience<br/>au pair en toute sérénité ?</h2>
-                <Link to="/contact" className="s-btn s-btn-primary">Contactez-nous</Link>
+                <h2 className="s-cta-title">Une belle aventure commence<br/>bien avant de monter dans l’avion.</h2>
+                <Link to="/reservation" className="s-btn s-btn-primary">Je veux être accompagné(e)</Link>
              </div>
           </div>
         </div>
